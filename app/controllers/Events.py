@@ -8,5 +8,5 @@ class Events(Controller):
         self.load_model('Location')
 
     def index(self):
-        return self.load_view('/events/index.html')
+        return self.load_view('/events/index.html') 
 
