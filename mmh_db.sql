@@ -32,8 +32,8 @@ CREATE TABLE user_events (
 );
 
 CREATE TABLE locations (
-    id int(11) NOT NULL AUTO_INCREMENT,
-    url varchar(300) DEFAULT NULL,
+    id int(11) NOT NULL,
+    name varchar(300) DEFAULT NULL,
     city varchar(300) DEFAULT NULL,
     state varchar(300) DEFAULT NULL,
     lat decimal(9,6) DEFAULT NULL,

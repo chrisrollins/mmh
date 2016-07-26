@@ -37,8 +37,8 @@
     </nav>
 
     <div class="container">
-        <form id="maps_form" action="/locations/get_map" method="post">
-            <input id="from" name="destination" value="{{ place }}" type="hidden">
+        <form id="maps_form" action="/locations/get_map_place" method="post">
+            <input id="from" name="destination" value="{{ place.lat_lon }}" type="hidden">
         </form>
 
         <div class="container-fluid">

@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `locations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `locations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(300) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(300) DEFAULT NULL,
   `city` varchar(300) DEFAULT NULL,
   `state` varchar(300) DEFAULT NULL,
   `lat` decimal(9,6) DEFAULT NULL,
@@ -43,6 +43,7 @@ CREATE TABLE `locations` (
 
 LOCK TABLES `locations` WRITE;
 /*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+INSERT INTO `locations` VALUES (1,'Alum Rock Park','San Jose','California',37.396800,-121.802300,'2016-07-26 12:08:15','2016-07-26 12:11:14');
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-26 10:45:21
+-- Dump completed on 2016-07-26 12:57:23
