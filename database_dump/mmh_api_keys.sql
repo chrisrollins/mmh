@@ -32,7 +32,7 @@ CREATE TABLE `api_keys` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `api_keys` (
 
 LOCK TABLES `api_keys` WRITE;
 /*!40000 ALTER TABLE `api_keys` DISABLE KEYS */;
-INSERT INTO `api_keys` VALUES (1,'7e7240b3ec36bfd52c31b9b7e16b1dac','openweathermap','emily\'s api key for openweathermap.org','2016-07-25 22:52:17','2016-07-25 22:52:17'),(2,'AIzaSyAZhZxE6bSncwuYD_TzESyzaJPcXv_ZEG0','google_maps_directions','emily\'s key for google maps directions api','2016-07-25 22:50:28','2016-07-25 22:50:28'),(3,'AIzaSyDfB4ORAt8gPRq4XTbDw-49yrOIRkqX9vM','google_maps_embed','emily\'s key for google maps embed api','2016-07-25 22:50:50','2016-07-25 22:50:50'),(4,'g8kCwu4ao9mshgqPqJM6RCbCxSMDp1q6llBjsnJypZOYJFs2TB','trailapi','emily\'s key for mashape.com','2016-07-25 22:51:09','2016-07-25 22:51:09');
+INSERT INTO `api_keys` VALUES (1,'7e7240b3ec36bfd52c31b9b7e16b1dac','openweathermap','emily\'s api key for openweathermap.org','2016-07-25 22:52:17','2016-07-25 22:52:17'),(2,'AIzaSyAZhZxE6bSncwuYD_TzESyzaJPcXv_ZEG0','google_maps_directions','emily\'s key for google maps directions api','2016-07-25 22:50:28','2016-07-25 22:50:28'),(3,'AIzaSyDfB4ORAt8gPRq4XTbDw-49yrOIRkqX9vM','google_maps_embed','emily\'s key for google maps embed api','2016-07-25 22:50:50','2016-07-25 22:50:50'),(4,'g8kCwu4ao9mshgqPqJM6RCbCxSMDp1q6llBjsnJypZOYJFs2TB','trailapi','emily\'s key for mashape.com','2016-07-25 22:51:09','2016-07-25 22:51:09'),(5,'1746054202317538','facebooklogin','steven\'s api key for facebook login','2016-07-26 08:49:19','2016-07-26 08:49:19');
 /*!40000 ALTER TABLE `api_keys` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-26  0:09:00
+-- Dump completed on 2016-07-26 10:45:21
