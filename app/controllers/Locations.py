@@ -5,11 +5,14 @@ class Locations(Controller):
         super(Locations, self).__init__(action)
         self.directions_url = "https://maps.googleapis.com/maps/api/directions/json?key="
         self.maps_url = "https://google.com/maps/embed/v1/place?key=" 
+        self.weather_url = "http://api.openweathermap.org/data/2.5/weather?appid="
         self.load_model('Api')
         self.load_model('Location')
 
     def index(self, location_id):
-        return self.load_view('locations/index.html')
+        place = "Alum Rock Park San Jose"
+        weather_url = self.get_weather_url(place)
+        return self.load_view('locations/index.html', place=place, weather_url=weather_url)
 
     # get_directions: use google maps directions api to get directions
     # from origin to destination
@@ -26,8 +29,16 @@ class Locations(Controller):
     # get_map: use google maps embedded api to return the url for loading partial html
     def get_map(self):
         destination = request.form['destination']
+        print("destination: ", destination)
         api_key = self.models['Api'].get_api_key('google_maps_embed')
         print("api_key: ", api_key)
         url = self.maps_url + api_key + "&" + urlencode({'q' : destination })
         return self.load_view("partials/maps.html", url=url)
+
+    # get_weather_url: get the url for the weather app for a specific location
+    def get_weather_url(self, place):
+        api_key = self.models['Api'].get_api_key('openweathermap')
+        print("api_key: ", api_key)
+        url = self.weather_url + api_key + "&units=imperial&" + urlencode({'q' : place })
+        return url
 

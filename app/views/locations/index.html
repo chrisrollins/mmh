@@ -8,40 +8,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script>
         $(document).ready(function(){
-            // upon form submit
-            $('#directions_form').submit(function() {
-                // gif while waiting for response
-                $('#directions').html('<img src="/static/img/35.gif">');
-
-                $.post($(this).attr('action'), $(this).serialize(), function(res) {
-                    //console.log('the response object:');
-                    console.log(res);
-                    var html_string = "";
-                    if(res.routes.length !== 0) {
-                        html_string += "<h4>Directions from " + res.routes[0].legs[0].start_address + "</h4>";
-                        html_string += "<h4>to " + res.routes[0].legs[0].end_address + "</h4>";
-                        var steps = res.routes[0].legs[0].steps;
-                        for (var i=0; i<steps.length; i++) {
-                            num = i+1;
-                            html_string += "<p>" + num + ". " + steps[i].html_instructions + "</p>";
-                        }
-                    } else {
-                        html_string = "Not Found";
-                    }
-                    //console.log('the html string:');
-                    console.log(html_string);
-                    $('#directions').html(html_string);
-                }, 'json');
-                return false;
+            $.post($('#maps_form').attr('action'), $('#maps_form').serialize(), function(res) {
+                $('#maps').html(res);
             });
 
-            $('#maps_form').submit(function() {
-                $.post($(this).attr('action'), $(this).serialize(), function(res) {
-                    console.log(res);
-                    $('#maps').html(res);
-                });
-                return false;
-            });
+            var url = "{{ weather_url }}";
+            $.get(url, function(res) {
+                var html_str = "";
+                html_str += "<h4>" + res.name + "</h4>";
+                html_str += "<p>Temperature: " + res.main.temp + "</p>"; 
+
+                $("div#weather").html(html_str);
+            }, 'json');
+
         });
     </script>
 </head>
@@ -58,24 +37,15 @@
     </nav>
 
     <div class="container">
-        <form id="directions_form" action="/maps/get_directions" method="post">
-            <label for="from">From:</label>
-            <input id="from" name="from" type="text">
-            <label for="to">To:</label>
-            <input id="to" name="to" type="text">
-            <input type="submit" value="Get directions!">
-        </form>
-
-        <div id="directions">
-        </div>
-
         <form id="maps_form" action="/locations/get_map" method="post">
-            <label for="from">Location:</label>
-            <input id="from" name="destination" type="text">
-            <input type="submit" value="Get map!">
+            <input id="from" name="destination" value="{{ place }}" type="hidden">
         </form>
 
-        <div id="maps">
+        <div class="container-fluid">
+            <div id="maps" class="col-md-6">
+            </div>
+            <div id="weather" class="col-md-6">
+            </div>
         </div>
 
     </div>
