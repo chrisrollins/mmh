@@ -28,18 +28,17 @@
                 $("#weather").html(res);
             });
 
-            $("#review_form").submit(function() {
-                $.post($(this).attr('action'), $(this).serialize(), function(res) {
-//                    $("#reviews").html(res);
-                    $("#reviewtext").val('')
-                });
-                return false;
-            });
-
             $.get("/reviews/reviews_by_location_html/{{ place_id }}", function(res) {
                 $("#reviews").html(res);
             });
 
+            $("#review_form").submit(function() {
+                $.post($(this).attr('action'), $(this).serialize(), function(res) {
+                    $("#reviews").html(res);
+                    $("#reviewtext").val('')
+                });
+                return false;
+            });
 
         });
     </script>
@@ -72,7 +71,7 @@
         </div>
 
         <!-- review form -->
-        <form id="review_form" action="/reviews/create" method="post">
+        <form id="review_form" action="/reviews/create_for_location" method="post">
             <div class="form-group">
                 <label class="form-group">Add a Review</label>
                 <input type="hidden" name="location_id" value="{{ place_id }}">

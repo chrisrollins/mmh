@@ -24,7 +24,7 @@ class Reviews(Controller):
 		print("create")
 		data = request.form
 		self.models['Review'].insert(data)
-		reviews = self.models['Review'].reviews_by_location(place_id)
+		reviews = self.models['Review'].reviews_by_location(data['location_id'])
 		return self.load_view('partials/location_reviews.html', reviews=reviews)
 
 	def delete(self, id):
