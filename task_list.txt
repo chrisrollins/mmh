@@ -1,0 +1,46 @@
+Mile and a Half
+
+Home:
+1 - facebook login
+1 - public event list
+
+Profile:
+1 - user events list (events that i own and am going to attend)
+1 - friend events list (events that friends are attending)
+2 - review list
+3 - badges
+3 - points
+
+Location:
+1   - map
+1   - weather api
+1   - hike info
+1.5 - events for that location
+2   - instagram about hikes
+2   - reviews on location
+2   - review form
+
+
+Create Event:
+1 - google address, start date
+1 - list of places around city
+1 - message form
+2 - invite friends
+
+Event:
+1 - location info
+1 - time
+1 - users going
+1 - description
+1 - weather
+1 - host
+2 - image
+
+
+Other tasks:
+facebook login
+navbar partial    - done
+map partial       - done
+weather partial   - done
+event box partial - done
+event creation
