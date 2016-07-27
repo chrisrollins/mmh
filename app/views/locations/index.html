@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Location</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/location.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script>
@@ -13,19 +13,31 @@
                 $("div#navbar").html(res);
             });
 
-            // get location info
-            $.get("/locations/get_place_info/{{ place_id }}", function(res) {
-                //console.log(res);
-            }, 'json');
-
             // get the map for the location id
             $.get("/locations/get_map_html/{{ place_id }}", function(res) {
                 $("#maps").html(res);
             });
 
+            // get location info
+            $.get("/locations/get_place_info_html/{{ place_id }}", function(res) {
+                $("#info").html(res);
+            });
+
             // get the weather for the location id
             $.get("/locations/get_weather_html/{{ place_id }}", function(res) {
                 $("#weather").html(res);
+            });
+
+            $.get("/reviews/select_all_html", function(res) {
+                $("#reviews").html(res);
+            });
+
+            $("#review_form").submit(function() {
+                $.post($(this).attr('action'), $(this).serialize(), function(res) {
+                    $("#reviews").html(res);
+                    $("#reviewtext").val('')
+                });
+                return false;
             });
         });
     </script>
@@ -34,15 +46,39 @@
     <div id="navbar">
     </div>
 
-    <div class="container">
+    <div class="container" id="body">
         <h2>{{ location_name }}</h2>
-        <div class="container-fluid">
-            <div id="maps" class="col-md-6">
+
+        <!-- maps and weather info -->
+        <div class="container-fluid" id="map_weather">
+            <div id="maps" class="col-md-4">
             </div>
-            <div id="weather" class="col-md-6">
+            <div id="info" class="col-md-4">
+            </div>
+            <div id="weather" class="col-md-4">
             </div>
         </div>
 
+        <!-- events -->
+        <h5>Events at this location</h5>
+        <div id="events" class="container-fluid scrollable">
+        </div>
+
+        <!-- reviews -->
+        <h5>Reviews</h5>
+        <div id="reviews" class="container-fluid scrollable">
+        </div>
+
+        <!-- review form -->
+        <form id="review_form" action="/reviews/create" method="post">
+            <div class="form-group">
+                <label class="form-group">Add a Review</label>
+                <input type="hidden" name="location_id" value="{{ place_id }}">
+                <input type="hidden" name="user_id" value="{{ user_id }}">
+                <textarea id="reviewtext" name="review" class="form-control" rows="3"></textarea>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
     </div>
 
 </body>

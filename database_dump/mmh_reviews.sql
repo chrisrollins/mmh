@@ -26,13 +26,13 @@ DROP TABLE IF EXISTS `reviews`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reviews` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location_id` int(11) DEFAULT NULL,
+  `location_id` varchar(200) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `review` text,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `reviews` (
 
 LOCK TABLES `reviews` WRITE;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+INSERT INTO `reviews` VALUES (1,'0',1,'this place has is a nice easy hike. some spots in exposed to the sun.  good for spring time hike.','2016-07-27 01:10:42','2016-07-27 01:10:42'),(2,'ChIJ-ZogKrvMj4ARKrML-5D1a88',1,'i can\'t wait to go again','2016-07-27 01:15:49','2016-07-27 01:15:49'),(3,'ChIJ-ZogKrvMj4ARKrML-5D1a88',1,'one more for the road','2016-07-27 01:20:57','2016-07-27 01:20:57');
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-26 20:14:11
+-- Dump completed on 2016-07-27  1:23:39

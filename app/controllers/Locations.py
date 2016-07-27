@@ -17,7 +17,7 @@ class Locations(Controller):
         location_info = self.get_place_info_obj(place_id)
         if location_info['status'] == "OK":
             name = location_info['result']['name']
-            return self.load_view('locations/index.html', location_name=name, place_id=place_id)
+            return self.load_view('locations/index.html', location_name=name, place_id=place_id, user_id=1)
         else:
             # redirect to profile page if location doesn't exist
             flash("Unknown location", "error")
@@ -45,6 +45,10 @@ class Locations(Controller):
     def get_place_info_obj(self, place_id):
         json_str = self.get_place_info(place_id)
         return json.loads(json_str)
+
+    def get_place_info_html(self, place_id):
+        location_info = self.get_place_info_obj(place_id)
+        return self.load_view("partials/location.html", location=location_info['result'])
 
     # get_weather: get weather information for a given place id
     # return a json response
@@ -76,7 +80,7 @@ class Locations(Controller):
         data = { 
             'origin'      : request.form.get('from', ''), 
             'destination' : request.form.get('to', '') 
-       }
+        }
         api_key = self.models['Api'].get_api_key('google_maps_directions')
         url = self.directions_url + api_key + "&sensor=false" + "&" + urlencode(data)
         response = requests.get(url).content

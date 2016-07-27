@@ -1,0 +1,23 @@
+* {
+  font-family: monaco;
+  margin: 0px;
+  padding: 0px;
+}
+#body {
+    margin-top: 50px;
+}
+h2 {
+    text-align: center;
+}
+#map_weather {
+    margin-top: 30px;
+}
+iframe {
+    margin-top: 20px;
+}
+.scrollable {
+    height: 150px;
+    overflow: auto;
+    border: 1px solid #eee;
+    margin-bottom: 30px
+}

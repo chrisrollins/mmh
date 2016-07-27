@@ -1,0 +1,7 @@
+<h4>Location Info</h4>
+<p>{{ location.vicinity }}</p>
+<p><a href="{{ location.website }}">{{ location.website }}</a></p>
+{% for hour in location.opening_hours.weekday_text %}
+   <p>{{ hour }}</p>
+{% endfor %}
+
