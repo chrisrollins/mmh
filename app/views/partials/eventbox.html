@@ -1,10 +1,12 @@
 <!--link bootstrap in your file-->
 <!-- this gives a div that contains a list of event boxes-->
+<!--might need to change python-->
 <div class='col-sm-3 events' style='border: 1px solid black'>
 	<h3 style='margin-top: 5%; margin-bottom: 5%; text-align: center'>Title</h3>
 	{% for event in events %}
 		<div class='row'>
 			<div class='col-sm-10 col-sm-offset-1' style='margin-bottom: 5%; border: 1px solid black'>
+				<img src="{{event['img_src']}}">
 				<h4 style='text-align: center'><a href="/events/{{event['id']}}">{{event['name']}}</a></h4>
 				<h5 style='text-align: center'><a href="/locations/{{event['location_id']}}">{{event['location_name']}}</a></h5>
 				{% if event['owner_id'] == session['id'] %}

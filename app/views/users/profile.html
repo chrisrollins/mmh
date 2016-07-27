@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>Profile | MMH</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="C:\Users\UMASL\Documents\CodingDojo\mmh\app\static\css\profile.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$.get('/welcome/get_navbar', function(res){
+					$('#navigation').html(res);
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<!--navbar-->
+		<!-- <nav class='navbar navbar-default navbar-fixed-top'>
+			<div class='container-fluid'>
+				<a class='navbar-brand' href="#">MMH</a>
+				<ul class='nav navbar-nav navbar-right'>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Create</a></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+		</nav> -->
+		<div id='navigation'></div>
+
+		<div id='glass'></div>
+		<div id='body'>
+			<div id='content' class='row'>
+				
+				<div class='col-sm-1'></div>
+
+				<!--user's events-->
+				<div class='col-sm-3 events'>
+					<h3>Your Events</h3>
+
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<img src="http://science-all.com/images/waterfall/waterfall-03.jpg">
+							<h4><a href="#">Company Hike to Yosemite Falls!</a></h4>
+							<h5><a href="#">Yosemite National Park</a></h5>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<img src="http://science-all.com/images/waterfall/waterfall-03.jpg">
+							<h4><a href="#">Danny's Epic Hike</a></h4>
+							<h5><a href="#">Alamere Falls</a></h5>
+							<button class='btn btn-danger'>Delete</button>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<img src="http://science-all.com/images/waterfall/waterfall-03.jpg">
+							<h4><a href="#">Family Reunion/Hike</a></h4>
+							<h5><a href="#">Mission Peak</a></h5>
+						</div>
+					</div>
+				</div><!--end of user-events-->
+
+				<div class='col-sm-1'></div>
+
+				<!--friends' events-->
+				<div class='col-sm-3 events'>
+					<h3>Friends' Events</h3>
+
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<img src="http://science-all.com/images/waterfall/waterfall-03.jpg">
+							<h4><a href="#">Company Hike to Yosemite Falls!</a></h4>
+							<h5><a href="#">Yosemite National Park</a></h5>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<img src="http://science-all.com/images/waterfall/waterfall-03.jpg">
+							<h4><a href="#">Company Hike to Yosemite Falls!</a></h4>
+							<h5><a href="#">Yosemite National Park</a></h5>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<img src="http://science-all.com/images/waterfall/waterfall-03.jpg">
+							<h4><a href="#">Company Hike to Yosemite Falls!</a></h4>
+							<h5><a href="#">Yosemite National Park</a></h5>
+						</div>
+					</div>
+				</div><!--end of friends' events-->
+
+				<div class='col-sm-1'></div>
+
+				<!--badges-->
+				<div id='badges' class='col-sm-2'>
+					<h3>Badges</h3>
+					<img src="http://static.vecteezy.com/system/resources/previews/000/099/519/original/boy-scout-badge-vector.jpg">
+				</div>
+				<div class='col-sm-1'></div>
+			</div><!--end of content-->
+
+			<div id='reviews' class='row'>
+				<div class='col-sm-8 col-md-offset-2'>
+					<h3>Reviews</h3>
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<p>Remember to bring an extra pair of socks because it can get pretty muddy here.</p>
+							<h5><a href='#'>Vernal Falls</a></h5>
+							<button class='btn btn-danger'>Delete</button>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<p>Remember to bring an extra pair of socks because it can get pretty muddy here.</p>
+							<h5><a href='#'>Vernal Falls</a></h5>
+							<button class='btn btn-danger'>Delete</button>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-10 col-sm-offset-1'>
+							<p>Remember to bring an extra pair of socks because it can get pretty muddy here.</p>
+							<h5><a href='#'>Vernal Falls</a></h5>
+							<button class='btn btn-danger'>Delete</button>
+						</div>
+					</div>
+				</div>
+			</div><!--end of reviews-->
+		</div><!--end of body-->
+	</body>
+</html>

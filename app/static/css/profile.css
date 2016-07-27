@@ -1,0 +1,96 @@
+*{
+	text-align: center;
+}
+
+.navbar{
+	margin-bottom: 0;
+}
+
+a{
+	color: #e6ffff;
+}
+
+/*#glass{
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	display: block;
+	background-image: url(http://feelgrafix.com/data_images/out/2/749109-beautiful-spring-forest-wallpaper.jpg);
+	width: 1500px;
+	height: 2000px;
+	background-size: cover;
+	-webkit-filter: blur(1px);
+}*/
+
+#body{
+	overflow: auto;
+	position: relative;
+	margin-top: 3%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	/*background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url(http://feelgrafix.com/data_images/out/2/749109-beautiful-spring-forest-wallpaper.jpg) no-repeat center center fixed;
+	background-size: cover;
+	padding-top: 1%;
+	padding-bottom: 1%;*/
+	/*-webkit-filter: blur(1px);*/
+}
+#body:before{
+	content: "";
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	display: block;
+	background: linear-gradient(
+		rgba(0, 0, 0, 0.5),
+		rgba(0, 0, 0, 0.5)
+	), url('http://feelgrafix.com/data_images/out/2/749109-beautiful-spring-forest-wallpaper.jpg');
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	-webkit-filter: blur(3px);
+}
+
+.btn{
+	float: right;
+	margin-bottom: 1%;
+}
+
+#content .col-sm-10, #content .col-sm-3, #content .col-sm-2, #reviews .col-sm-8, #reviews .col-sm-10{
+	border: 1px solid white;
+}
+
+.events h3{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	text-align: center;
+	color: white;
+}
+	.events .row div{
+		margin-bottom: 5%;
+	}
+	.events img{
+		height: 50px;
+		width: 50px;
+		margin-top: 1%;
+	}
+
+#badges{
+	color: #e6fff3;
+}
+	#badges img{
+		height: 100px;
+		width: 180px;
+	}
+
+#reviews{
+	margin-top: 5%;
+	color: white;
+}
+	#reviews .col-sm-10{
+		margin-bottom: 2%;
+	}
