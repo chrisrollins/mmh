@@ -12,7 +12,7 @@ Profile:
 3 - points
 
 Location:
-1   - map
+1   - map 
 1   - weather api
 1   - hike info
 1.5 - events for that location

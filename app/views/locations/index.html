@@ -28,17 +28,19 @@
                 $("#weather").html(res);
             });
 
-            $.get("/reviews/select_all_html", function(res) {
-                $("#reviews").html(res);
-            });
-
             $("#review_form").submit(function() {
                 $.post($(this).attr('action'), $(this).serialize(), function(res) {
-                    $("#reviews").html(res);
+//                    $("#reviews").html(res);
                     $("#reviewtext").val('')
                 });
                 return false;
             });
+
+            $.get("/reviews/reviews_by_location_html/{{ place_id }}", function(res) {
+                $("#reviews").html(res);
+            });
+
+
         });
     </script>
 </head>

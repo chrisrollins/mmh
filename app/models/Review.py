@@ -4,6 +4,10 @@ class Review(Model):
     def __init__(self):
         super(Review, self).__init__()
 
+    def reviews_by_location(self, place_id):
+        query = "SELECT * FROM reviews WHERE location_id = :id ORDER BY updated_at DESC"
+        return self.db.query_db(query, { 'id' : place_id })
+        
     def select_all(self):
         query = "SELECT * FROM reviews ORDER BY updated_at DESC"
         return self.db.query_db(query)

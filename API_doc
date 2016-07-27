@@ -1,0 +1,37 @@
+Location and Weather
+
+from python:
+json_str = self.models['Location'].get_place_info(place_id)
+dict_obj = self.models['Location'].get_place_info_obj(place_id)
+str = self.models['Location'].get_place_name(place_id)
+
+json_str = self.models['Location'].get_weather(place_id)
+dict_obj = self.models['Location'].get_weather_obj(place_id)
+
+from jquery:
+
+// get the map for the location id
+$.get("/locations/get_map_html/{{ place_id }}", function(res) {
+    $("#maps").html(res);
+});
+
+// get location info
+$.get("/locations/get_place_info_html/{{ place_id }}", function(res) {
+    $("#info").html(res);
+});
+
+// get the weather for the location id
+$.get("/locations/get_weather_html/{{ place_id }}", function(res) {
+    $("#weather").html(res);
+});
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Navbar
+
+from jquery:
+
+// get the navbar
+            $.get("/welcome/get_navbar", function(res) {
+                $("div#navbar").html(res);
+            });
