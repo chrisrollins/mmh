@@ -29,7 +29,7 @@ CREATE TABLE `events` (
   `name` varchar(100) DEFAULT NULL,
   `image_source` varchar(200) DEFAULT NULL,
   `description` text,
-  `location_id` int(11) DEFAULT NULL,
+  `location_id` varchar(200) DEFAULT NULL,
   `owner_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-26 12:57:23
+-- Dump completed on 2016-07-26 20:14:11

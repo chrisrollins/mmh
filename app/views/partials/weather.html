@@ -1,0 +1,8 @@
+<h4>Check the Weather</h4>
+<p>Temperature: {{ weather['main']['temp'] }}</p>
+<p>Weather: {{ weather['weather'][0]['main'] }}</p>
+<p>Humidity: {{ weather['main']['humidity'] }}</p>
+<p>Wind Speed: {{ weather['wind']['speed'] }}</p>
+<p>Sunrise: {{ weather['sys']['sunrise']  }}</p> <!-- need to convert utc time to local --> 
+<p>Sunset: {{ weather['sys']['sunset']  }}</p> 
+ 

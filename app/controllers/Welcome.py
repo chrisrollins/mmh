@@ -8,3 +8,6 @@ class Welcome(Controller):
     def index(self):
         appId = self.models['Api'].get_api_key('facebooklogin') 
         return self.load_view('index.html', appId=appId)
+
+    def get_navbar(self):
+        return self.load_view('partials/navbar.html')

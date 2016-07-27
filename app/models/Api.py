@@ -5,7 +5,7 @@ class Api(Model):
         super(Api, self).__init__()
 
     # get_api_key: get the api key for specified app
-    # possible names: openweathermap, google_maps_directions, google_maps_embed, trailapi
+    # possible names: openweathermap, google_maps_directions, google_maps_embed, trailapi, facebooklogin
     # returns a key of type string
     def get_api_key(self, name):
         query = "SELECT api_key FROM api_keys WHERE name = :name";

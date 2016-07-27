@@ -8,39 +8,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script>
         $(document).ready(function(){
-            $.post($('#maps_form').attr('action'), $('#maps_form').serialize(), function(res) {
-                $('#maps').html(res);
+            // get the navbar
+            $.get("/welcome/get_navbar", function(res) {
+                $("div#navbar").html(res);
             });
 
-            var url = "{{ weather_url }}";
-            $.get(url, function(res) {
-                var html_str = "";
-                html_str += "<h4>" + res.name + "</h4>";
-                html_str += "<p>Temperature: " + res.main.temp + "</p>"; 
-
-                $("div#weather").html(html_str);
+            // get location info
+            $.get("/locations/get_place_info/{{ place_id }}", function(res) {
+                //console.log(res);
             }, 'json');
 
+            // get the map for the location id
+            $.get("/locations/get_map_html/{{ place_id }}", function(res) {
+                $("#maps").html(res);
+            });
+
+            // get the weather for the location id
+            $.get("/locations/get_weather_html/{{ place_id }}", function(res) {
+                $("#weather").html(res);
+            });
         });
     </script>
 </head>
 <body>
-    <nav class='navbar navbar-default'>
-        <div class='container-fluid'>
-            <a class='navbar-brand' href="#">MMH</a>
-            <ul class='nav navbar-nav navbar-right'>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Create</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="navbar">
+    </div>
 
     <div class="container">
-        <form id="maps_form" action="/locations/get_map_place" method="post">
-            <input id="from" name="destination" value="{{ place.lat_lon }}" type="hidden">
-        </form>
-
+        <h2>{{ location_name }}</h2>
         <div class="container-fluid">
             <div id="maps" class="col-md-6">
             </div>
