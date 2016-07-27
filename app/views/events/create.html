@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Creating a new Event</title>
+        <!-- <link href="main.css" media="all" rel="stylesheet" /> -->
+        <style type="text/css">
+            *{font-family: sans-serif; vertical-align:top;}
+
+            #locations
+            {
+            	width: 300px;
+            	height: 500px;
+            	border: 1px solid;
+                overflow-y: scroll;
+                font-size: 14px;
+                display: inline-block;
+            }
+            #selected_location_info
+            {
+                width: 300px;
+                height: 450px;
+            }
+            #selected_location
+            {   
+                width: 300px;
+                height: 450px;
+                display: inline-block;
+            }
+            .place
+            {
+                height: 30px;
+                background-color: #e5e5e5;
+                border-bottom: 1px solid;
+                overflow-x: scroll;
+                overflow-y: scroll;
+            }
+            .place span
+            {
+                position: relative;
+                top: 5px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                var loading = false;
+
+            	$("#search").mouseup(function()
+                {
+                	city = $("#cityInput").val().replace(" ", "+");
+
+                    if(!loading)
+                    {
+                        loading = true;
+                        document.getElementById('locations').innerHTML = "<br><br><br><center><img src='http://i.imgur.com/pwzYfJB.gif'></center>";
+                                
+    					$.ajax({
+    		            url: "https://trailapi-trailapi.p.mashape.com/?q[activities_activity_type_name_eq]=hiking&q[city_cont]="+ city +"&radius=25",
+    		            type: "GET",
+    		            dataType: "json",
+    		            headers: { "X-Mashape-Key": "nJM45RuRctmshsKo2xRWSlwAcEump11ifNOjsnjXsrWF3Hp3Nl", "Accept": "text/plain" },
+    		            success: function (data)
+                            {
+                                var places = data["places"];
+                                var nameList = "";
+
+                                for(var i=0; i<places.length; i++)
+                                {
+                                    nameList += "<div class='place' value='"+ i +"'><input type='hidden' value='"+ i +"'><span>" + data["places"][i]["name"] + "</span></div>";
+                                }
+
+                                document.getElementById('locations').innerHTML = nameList;
+                                console.log(places);
+
+                                $(".place").hover(function()
+                                {
+                                    $(this).css( "background-color", "#555555" );
+                                    $(this).css( "color", "#eeeeee" );
+                                },function()
+                                {
+                                    $(this).css( "background-color", "#e5e5e5" );
+                                    $(this).css( "color", "#000000" );
+                                });
+
+                                $(".place").mouseup(function()
+                                {
+                                    var val = $(this).attr("value");
+                                    console.log(places[val]);
+
+                                    document.getElementById('selected_location_info').innerHTML = 
+                                    "Create new event @ " + places[val]["name"] + "<br><div style='width:100px;height:100px;border: 1px solid;'><br>placeholder for map</div>";
+                                
+
+                                });
+
+                                loading = false;
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <center>
+            <div id="wrapper">
+	        	<div>
+                    <br><br><br>
+    	        	<b>You can search by city to find nearby hiking trails for your activity.</b>
+    	        	<br><br>
+    	        	City: <input id="cityInput" type="text" name="city">
+    	        	<br>
+    	        	<input id="search" type="submit" name="Search" value="search">
+                    <br>
+                    <br>
+	        	</div>
+                <div id="locations">
+                <br>
+                Search a city for nearby trails.
+                	
+                </div>
+                <div id="selected_location">
+                <div id="selected_location_info"></div>
+                    <form action="/event/create" method="post">
+                        Event Name: <input type="text" name="eventName">
+                        Event Description:<textarea name="description" rows="2" cols="25"></textarea>
+                        <br>
+                        <br>
+                        <input type="submit" name="submit" value="Create Event">
+                    </form>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>

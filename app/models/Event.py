@@ -10,35 +10,11 @@ class Event(Model):
         return self.db.query_db(query)
 
 
-    #Returns the ID of the location the event is at.
-    def getEventLocationID(self, event_id):
-		query = "SELECT location_id FROM events WHERE events.event_id = :event_id"
+    #Get all data about an event.
+  	def getEventData(self, event_id):
+    	query = "SELECT * FROM events WHERE events.id = event_id"
         data = { "event_id": event_id }
-        return self.db.query_db(query, data)
-
-
-   	#Returns the user ID of the owner of the event.
-    def getOwnerID(self, event_id):
-		query = "SELECT owner_id FROM events WHERE events.event_id = :event_id"
-        data = { "event_id": event_id }
-        return self.db.query_db(query, data)
-
-
-  	#Returns the day, month, and year the event is scheduled for.
-    def getDate(self, event_id):
-    	pass
-
-
-   	#Returns the time the event is scheduled for. (ie. 6:35 PM)
-    def getTime(self, event_id):
-    	pass
-
-
-    #Returns the owner's description of the event.
-    def getEventDescription(event_id):
-		query = "SELECT description FROM events WHERE events.event_id = :event_id"
-        data = { "event_id": event_id }
-        return self.db.query_db(query, data)
+        return self.db.query_db(query)
 
 
     def getLocationEvent(self, place_id):
@@ -53,5 +29,8 @@ class Event(Model):
         return self.db.query_db(query, data)
 
 
-
-
+    #use the google places ID string
+    def createEventAtLocation(self, place_id, owner_id, location_id, description, eventTime, ):
+    	query = "INSERT INTO events (name, description, location_id, owner_id, created_at) VALUES (:eventName, :eventDesc, :loc, :owner, :eventTime)"
+        data = { "user_id": user_id }
+        return self.db.query_db(query, data)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Activity @ {{ locationName }}</title>
+        <title>Event @ {{ locationName }}</title>
         <!-- <link href="main.css" media="all" rel="stylesheet" /> -->
         <style type="text/css">
             *{font-family: sans-serif; vertical-align:top;}
@@ -17,7 +17,7 @@
     <body>
         <center>
             <div id="wrapper">
-                <h1>Upcoming Activity @ <a href="event.html">{{ locationName }}</a></h1>
+                <h1>Upcoming Event @ <a href="/location/{{ location_id }}">{{ locationName }}</a></h1>
                     <br>
                 <div style="display:inline-block; margin-right:350px;">
                     <div id="map" style="width:150px; height:150px; border: 1px solid;">
@@ -27,7 +27,7 @@
                     <br>
                     <br>
                     <br>
-                    <p><b>Hosted By:</b> {{ host }}</p>
+                    <p><b>Hosted By:</b> {{ ownerName }}</p>
                     <p><b>Date:</b> {{ date }}</p>
                     <p><b>Time:</b> {{ time }}</p>
                     <p><b>Description:</b> {{ description }}</p>
