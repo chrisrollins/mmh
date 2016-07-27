@@ -18,30 +18,26 @@ USE `mmh`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `locations`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `locations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` bigint(11) NOT NULL,
-  `handle` varchar(200) DEFAULT NULL,
-  `email` varchar(200) DEFAULT NULL,
-  `points` int(5) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+CREATE TABLE `locations` (
+  `id` varchar(200) NOT NULL,
+  `name` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `locations`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

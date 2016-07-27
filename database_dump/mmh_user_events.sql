@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `user_events`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` bigint(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-27  1:23:40
+-- Dump completed on 2016-07-27 16:05:49
