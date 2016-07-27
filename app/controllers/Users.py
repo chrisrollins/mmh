@@ -16,3 +16,15 @@ class Users(Controller):
         session.clear()
         return redirect('/')
 
+    def create(self):
+        data = {
+            'handle': request.form['handle'],
+            'id': request.form['id'],
+            'email': request.form['email']
+        }
+        print data
+
+        user = self.models['User'].create(data)
+        print user['id']
+        return redirect('/')
+

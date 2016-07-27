@@ -26,9 +26,7 @@
       var accessToken = response.authResponse.accessToken;
       console.log(accessToken)
       testAPI();
-      //commented these functions out
-      // submitform();
-      // getfriend();
+      
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -113,22 +111,9 @@
     });
   }
 
-  function getinfo(){
-    FB.api('/me', function(response){
-      $("#fbinput").val(response.name);
-      $("#token").val(response.id)
-    });
-  }
+  
 
-  function getfriend(){
-    FB.api('/me/','GET',
-  {"fields":"email,friends"},
-  function(response) {
-    console.log(response)
-      // Insert your code here
-        }
-    );
-  }
+  
 </script>
 
 
