@@ -17,6 +17,10 @@ class Reviews(Controller):
         reviews = self.select_all()
         return self.load_view('partials/review.html', reviews=reviews)
 
+    def select_all_json(self):
+        reviews = self.select_all()
+        return jsonify(reviews=reviews)
+
     def create(self):
         print("create")
         data = request.form
