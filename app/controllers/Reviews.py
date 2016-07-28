@@ -21,7 +21,6 @@ class Reviews(Controller):
 		return jsonify(reviews=reviews)
 
 	def create_for_location(self):
-		print("create")
 		data = request.form
 		self.models['Review'].insert(data)
 		reviews = self.models['Review'].reviews_by_location(data['location_id'])

@@ -11,10 +11,6 @@ class Locations(Controller):
 		location_info = self.models['Location'].get_place_info_obj(place_id)
 		if location_info['status'] == "OK":
 			name = location_info['result']['name']
-
-			events = self.get_location_events_html(place_id)
-			print("events: ", events)
-
 			return self.load_view('locations/index.html', location_name=name, place_id=place_id, user_id=1)
 		else:
 			# redirect to profile page if location doesn't exist
@@ -46,7 +42,6 @@ class Locations(Controller):
 
 	def get_location_events_html(self, place_id):
 		events = self.models['Event'].getLocationEvent(place_id)
-
-		return events
+		return self.load_view("partials/eventbox.html", events=events)
 	
 

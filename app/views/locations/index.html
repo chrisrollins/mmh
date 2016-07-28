@@ -28,10 +28,17 @@
                 $("#weather").html(res);
             });
 
+            // get events for this location
+            $.get("/locations/get_location_events_html/{{ place_id }}", function(res) {
+                $("#events").html(res);
+            });
+
+            // get the reviews by location
             $.get("/reviews/reviews_by_location_html/{{ place_id }}", function(res) {
                 $("#reviews").html(res);
             });
 
+            // add a review and load up the updated review list
             $("#review_form").submit(function() {
                 $.post($(this).attr('action'), $(this).serialize(), function(res) {
                     $("#reviews").html(res);
@@ -75,7 +82,7 @@
             <div class="form-group">
                 <label class="form-group">Add a Review</label>
                 <input type="hidden" name="location_id" value="{{ place_id }}">
-                <input type="hidden" name="user_id" value="{{ user_id }}">
+                <input type="hidden" name="user_id" value="{{ session.id }}">
                 <textarea id="reviewtext" name="review" class="form-control" rows="3"></textarea>
                 <button type="submit" class="btn btn-default">Submit</button>
             </div>
