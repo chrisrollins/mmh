@@ -1,4 +1,7 @@
 <!-- make sure to link bootstrap in your file-->
+
+
+
 <!--navbar-->
 <nav class='navbar navbar-default navbar-fixed-top'>
 	<div class='container-fluid'>
@@ -6,7 +9,8 @@
 		<ul class='nav navbar-nav navbar-right'>
 			<li><a href="/users/index">Profile</a></li>
 			<li><a href="/events/create">Create</a></li>
-			<li><a href="/users/logout">Logout</a></li>
+			<li><a href="https://www.facebook.com/logout.php?next=http://localhost:5000/&access_token={{session['accessToken']}}">Logout</a></li>
+			
 		</ul>
 	</div>
 </nav>

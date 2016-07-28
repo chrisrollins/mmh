@@ -10,3 +10,6 @@ routes['POST']['/event/create']   = 'Events#create' #only used by the event crea
 routes['/locations/get_map_html/<place_id>']        = 'Locations#get_map_html' # get embedded map for display
 routes['/locations/get_place_info_html/<place_id>'] = 'Locations#get_place_info_html' # get detailed info about a location
 routes['/locations/get_weather_html/<place_id>']    = 'Locations#get_weather_html' # get weather info
+routes['POST']['/users/create']   = 'Users#create'
+routes['/users/profile']		  = 'Users#profile'
+

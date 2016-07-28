@@ -14,13 +14,14 @@ class User(Model):
 		print 'inserting data'
 
 		check_query = "SELECT * FROM users WHERE id = :id "
-		check_id = { 'id': info['id']}
+		check_id = { 'id':info['id']}
 		check_user = self.db.query_db(check_query,check_id)
+
 		if check_user:
-			return check_user
+			return check_user[0]['id']
 		else:
 			self.db.query_db(query,data)
-			get_user = "SELECT * FROM users ORDER BY id DESC LIMIT 1"
+			get_user = "SELECT users.id FROM users ORDER BY id DESC LIMIT 1"
 			return self.db.query_db(get_user)
 
 		

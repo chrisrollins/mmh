@@ -22,12 +22,15 @@ class Users(Controller):
         data = {
             'handle': request.form['handle'],
             'id': request.form['id'],
-            'email': request.form['email']
+            'email': request.form['email'],
         }
-        print data
-
+        
+        session['accessToken'] = request.form['token']
+        
         user = self.models['User'].create(data)
-        print user['id']
+
+        session['id'] = user 
+
         return redirect('/users/profile')
 
     def profile(self):

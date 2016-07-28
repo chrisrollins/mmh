@@ -11,7 +11,7 @@ class DevelopmentDBConfig(DBConfig):
 	DB_PASSWORD = 'root'
 	DB_DATABASE_NAME = 'mmh'
 	DB_HOST = 'localhost'
-	DB_PORT = 3306
+	DB_PORT = 8889
 
 	DB_OPTIONS = {
 		'unix_socket' : '/Applications/MAMP/tmp/mysql/mysql.sock'

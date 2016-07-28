@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Login Mile and a Half</title>
+<link rel="stylesheet" href="{{url_for('static',filename='css/welcome.css')}}">
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 </head>
@@ -12,6 +13,7 @@
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
+    document.getElementById('token').value = response.authResponse.accessToken;
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -102,22 +104,21 @@
       document.getElementById('handle').value = response.name;
       document.getElementById('email').value = response.email;
       document.getElementById('id').value = response.id;
+    
       $('#email').change(function(){
         $('form').submit( );
       });
       $.post('/users/create', $("form").serialize(),function(res){
+        location.replace('/users/profile')
         console.log('it went in')
+
         });
+
+        
     });
   }
-
-  
-
   
 </script>
-
-
-
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -134,7 +135,9 @@
   the FB.login() function when clicked.
 -->
 <div id = "wrapper">
-    <div id ="picture"></div>
+    <div id ="picture">
+      <img src="">
+    </div>
     <div id = "activities"></div>
 
     <div id ="login">
@@ -147,9 +150,11 @@
         <div id = "registration">
 
           <form action="/users/create" method="POST">
-            <input id ="handle" type="text" name="handle" value="">
-            <input id ="id" type="text" name="id" value="">
-            <input id ="email" type="text" name="email" value="">
+            <input id ="handle" type="hidden" name="handle" value="">
+            <input id ="id" type="hidden" name="id" value="">
+            <input id="token" type="hidden" name="token" value="">
+            <input id ="email" type="hidden" name="email" value="">
+
           </form>
         </div>
     </div>
