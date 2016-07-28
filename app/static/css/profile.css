@@ -80,11 +80,11 @@ a{
 	}
 
 #badges{
-	color: #e6fff3;
+	color: white;
 }
 	#badges img{
 		height: 100px;
-		width: 180px;
+		width: 100px;
 	}
 
 #reviews{
