@@ -26,6 +26,10 @@
 					}
 					$('#reviews-col').append(htmlStr);
 				});
+
+				$.get('/users/get_events_for_user', function(res){
+					$('#userevents').append(res);
+				});
 			})
 		</script>
 	</head>
@@ -50,10 +54,10 @@
 				<div class='col-sm-1'></div>
 
 				<!--user's events-->
-				<div class='col-sm-3 events'>
+				<div id='userevents' class='col-sm-3 events'>
 					<h3>Your Events</h3>
 
-					<div class='row'>
+					<!-- <div class='row'>
 						<div class='col-sm-10 col-sm-offset-1'>
 							<img src="http://science-all.com/images/waterfall/waterfall-03.jpg">
 							<h4><a href="#">Company Hike to Yosemite Falls!</a></h4>
@@ -74,7 +78,7 @@
 							<h4><a href="#">Family Reunion/Hike</a></h4>
 							<h5><a href="#">Mission Peak</a></h5>
 						</div>
-					</div>
+					</div> -->
 				</div><!--end of user-events-->
 
 				<div class='col-sm-1'></div>
