@@ -28,3 +28,7 @@ class Events(Controller):
 
 		event_id = self.models['Event'].createEventAtLocation(place_id, owner_id, eventName, location_name, description, eventTime)
 		return redirect("/events/" + str(event_id))
+
+	def destroy(self, event_id):
+		self.models['Event'].deleteEvent(event_id)
+		return redirect('/users/profile')

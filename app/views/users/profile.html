@@ -12,7 +12,6 @@
 					$('#navigation').html(res);
 				});
 
-				//NEED TO CHANGE based on res object
 				$.get('/users/get_reviews_for_user', function(res){
 					$('#reviews-col').append(res);
 				});

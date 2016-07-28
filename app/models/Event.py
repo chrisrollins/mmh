@@ -40,3 +40,8 @@ class Event(Model):
 		query = "INSERT INTO user_events(user_id, event_id) VALUES (:owner_id, :event_id)"
 		self.db.query_db(query, { 'owner_id' : owner_id, 'event_id' : event_id })
 		return event_id
+
+	def deleteEvent(self, event_id):
+		query = 'DELETE FROM events WHERE id=:event_id'
+		data = { 'event_id': event_id}
+		return self.db.query_db(query, data)
