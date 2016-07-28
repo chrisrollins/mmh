@@ -1,4 +1,5 @@
 from system.core.model import *
+from datetime import datetime
 import re
 import requests
 import json
@@ -55,7 +56,10 @@ class Location(Model):
 	# return dictionary object
 	def get_weather_obj(self, place_id):
 		json_str = self.get_weather(place_id)
-		return json.loads(json_str)
+		weather = json.loads(json_str)
+		weather['sunrise'] = datetime.fromtimestamp(weather['sys']['sunrise']).strftime('%Y-%m-%d %H:%M:%S')
+		weather['sunset'] = datetime.fromtimestamp(weather['sys']['sunrise']).strftime('%Y-%m-%d %H:%M:%S')
+		return weather
 
 	# get_directions: use google maps directions api to get directions
 	# from origin to destination
