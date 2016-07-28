@@ -12,4 +12,5 @@ routes['POST']['/users/create']   = 'Users#create'
 routes['/users/profile']		  = 'Users#profile'
 routes['/users/get_events_for_user'] = 'Users#get_events_for_user'
 routes['/events/destroy/<event_id>'] = 'Events#destroy'
+routes['/display'] = 'Events#display'
 

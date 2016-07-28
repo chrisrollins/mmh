@@ -46,3 +46,9 @@ class Event(Model):
 		query = 'DELETE FROM events WHERE id=:event_id'
 		data = { 'event_id': event_id}
 		return self.db.query_db(query, data)
+
+
+	def showTopfive(self):
+		query = "SELECT * FROM events LIMIT 5"
+		return self.db.query_db(query)
+

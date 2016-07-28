@@ -12,8 +12,10 @@
 					<h5 style='text-align: center'><a href="/locations/{{event['location_id']}}">{{ event['location_name'] }}</a></h5>
 				{% endif %}
 				<p style='color: white'>Hosted by: {{ event['handle'] }}</p>
-				{% if event['owner_id'] == session['id'] %}
-					<button class='btn btn-danger' style='float: right; margin-bottom: 1%'><a href="/events/destroy/{{event['event_id']}}">Delete</a></button>
+				{% if 'id' in session %}
+					{% if event['owner_id'] == session['id'] %}
+						<button class='btn btn-danger' style='float: right; margin-bottom: 1%'><a href="/events/destroy/{{event['event_id']}}">Delete</a></button>
+					{% endif %}
 				{% endif %}
 			</div>
 		</div>

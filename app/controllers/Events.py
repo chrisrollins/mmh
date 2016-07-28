@@ -38,3 +38,8 @@ class Events(Controller):
 	def destroy(self, event_id):
 		self.models['Event'].deleteEvent(event_id)
 		return redirect('/users/profile')
+
+	def display(self):
+		activity = self.models['Event'].showTopfive()
+		print activity
+		return self.load_view('/partials/eventbox.html', events = activity)

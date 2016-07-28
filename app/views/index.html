@@ -3,8 +3,10 @@
 <html lang="en">
 <head>
 <title>Login Mile and a Half</title>
-<link rel="stylesheet" href="{{url_for('static',filename='css/welcome.css')}}">
+
 <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url_for('static',filename='css/welcome.css')}}">
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 </head>
@@ -118,11 +120,10 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-<script type="text/javascript">
+<script>
 	$(document).ready(function(){
-				
-				$.get('/users/show', function(res){
-					$('#activities').append(res);
+				$.get('/display', function(res){
+					$('#events').append(res);
 				});
 			});
 </script>
@@ -130,8 +131,14 @@
     <div id ="picture">
       
     </div>
-    <h1>Mile and a Half</h1>
-    <div id = "activities"></div>
+    <h1 id="header">Mile and a Half</h1>
+
+    <div id = "activities">
+      <h5>Events going on</h5>center
+      <div class="row">
+        <div id = 'events' class='col-sm-8'></div>
+      </div>
+    </div>
 
     <div id ="login">
         <div class="fb-login-button" data-max-rows="5" data-size="large" data-show-faces="true" data-auto-logout-link="true" onlogin ="checkLoginState();">
