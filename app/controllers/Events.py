@@ -13,9 +13,15 @@ class Events(Controller):
 		data = self.models['Event'].getEventData(event_id)
 		location_name = self.models['Location'].get_place_name(data[0]["location_id"])
 		owner_name = self.models['User'].getUserName(data[0]["owner_id"])
-		event_users = self.models['Event'].getEventUsersByName(event_id)
+		event_users = self.models['Event'].getEventUsers(event_id)
+		showbutton = "true"
+		
+		for user in event_users:
+			if user["id"] == session["id"]:
+				showbutton = "false"
+
 		print event_users
-		return self.load_view('/events/index.html', data=data[0], location_name=location_name, owner_name=owner_name)
+		return self.load_view('/events/index.html', data=data[0], location_name=location_name, owner_name=owner_name, user_id=session["id"], event_users=event_users, showbutton=showbutton)
 
 
 	def createPage(self):
@@ -32,6 +38,11 @@ class Events(Controller):
 		print owner_id
 		image_source = '/static/img/waterfall-03.jpg' # default waterfall image
 		event_id = self.models['Event'].createEventAtLocation(place_id, owner_id, eventName, location_name, description, image_source, eventTime)
+		return redirect("/events/" + str(event_id))
+
+
+	def join(self, event_id):
+		self.models['Event'].addUserToEvent(event_id, session["id"])
 		return redirect("/events/" + str(event_id))
 
 

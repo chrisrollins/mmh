@@ -43,6 +43,9 @@
                     <p><b>Hosted By:</b> {{ owner_name[0]["handle"] }}</p>
                     <p><b>Date:</b> {{ data["created_at"] }}
                     <p><b>Description:</b> {{ data["description"] }}</p>
+                    {% if showbutton == "true" %}
+                    	<a href="/events/join/{{ data['id'] }}"> <input type="button" name="join" value="Join Event"></a>
+                    {% endif %}
                 </div>
                 <div style="display:inline-block;"">
                     <div id="weather" style="width:150px; height:150px; border: 1px solid;">
@@ -55,7 +58,7 @@
                     <div id="users" style="width:150px; height:200px; border: 1px solid;">
                         {% if event_users %}
                         	{% for user in event_users%}
-                        		<p>{{ user }}</p>
+                        		<p>{{ user["handle"] }}</p>
                         	{% endfor %}
                         {% endif %}
                     </div>

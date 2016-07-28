@@ -29,16 +29,23 @@ class Event(Model):
 		return self.db.query_db(query, data)
 
 
-	def getEventUsersByName(self, event_id):
-		query = "SELECT users.handle FROM users JOIN user_events ON users.id = user_events.user_id WHERE user_events.event_id = :event_id"
+	def getEventUsers(self, event_id):
+		query = "SELECT users.* FROM users JOIN user_events ON users.id = user_events.user_id WHERE user_events.event_id = :event_id"
 		data = {"event_id": event_id}
 		return self.db.query_db(query, data)
 
 
 	def addUserToEvent(self, event_id, user_id):
-		query = "INSERT INTO user_events (user_id, event_id) VALUES (:user_id, :event_id)"
+		query = "SELECT users.id FROM users JOIN user_events ON users.id = user_events.user_id WHERE user_events.event_id = :event_id AND user_events.user_id = :user_id"
 		data = {"event_id": event_id, "user_id": user_id}
-		return self.db.query_db(query, data)
+		check = self.db.query_db(query, data)
+
+		if len(check) == 0:
+			query = "INSERT INTO user_events (user_id, event_id) VALUES (:user_id, :event_id)"
+			data = {"event_id": event_id, "user_id": user_id}
+			return self.db.query_db(query, data)
+		else:
+			return []
 
 
 	#use the google places ID string
