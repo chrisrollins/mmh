@@ -39,7 +39,7 @@
 	padding-left: 10px;
 	margin-left: 60px;
 /*	opacity: 0.7;*/
-	overflow:scroll;
+	overflow-y:scroll;
 	
 }
 
