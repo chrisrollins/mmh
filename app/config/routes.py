@@ -1,8 +1,6 @@
 from system.core.router import routes
 
 routes['default_controller']      = 'Welcome'
-routes['/profile']                = 'Users#index'
-routes['/logout']                 = 'Users#logout'
 routes['/review']                 = 'Reviews#index'
 routes['/event/<event_id>']       = 'Events#index'
 routes['/event/new']              = 'Events#createPage' #use to link to the event creation page when the user wants to create a new event
@@ -12,4 +10,5 @@ routes['/locations/get_place_info_html/<place_id>'] = 'Locations#get_place_info_
 routes['/locations/get_weather_html/<place_id>']    = 'Locations#get_weather_html' # get weather info
 routes['POST']['/users/create']   = 'Users#create'
 routes['/users/profile']		  = 'Users#profile'
+routes['/users/get_events_for_user'] = 'Users#get_events_for_user'
 
