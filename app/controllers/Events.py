@@ -29,6 +29,7 @@ class Events(Controller):
 		eventTime = request.form["date"]
 		eventName = request.form["eventName"]
 		owner_id = session["id"]
+		print owner_id
 		image_source = '/static/img/waterfall-03.jpg' # default waterfall image
 
 		event_id = self.models['Event'].createEventAtLocation(place_id, owner_id, eventName, location_name, description, image_source, eventTime)

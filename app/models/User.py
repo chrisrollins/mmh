@@ -26,6 +26,6 @@ class User(Model):
 
 	
 	def getUserName(self, user_id):
-		query = "SELECT name FROM users WHERE id = :user_id"
+		query = "SELECT handle FROM users WHERE id = :user_id"
 		data = {"user_id": user_id}
 		return self.db.query_db(query, data)
