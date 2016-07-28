@@ -51,7 +51,7 @@ class Event(Model):
 		event_id = self.db.query_db(query, data)
 		query = "INSERT INTO user_events(user_id, event_id) VALUES (:owner_id, :event_id)"
 		self.db.query_db(query, { 'owner_id' : owner_id, 'event_id' : event_id })
-		addUserToEvent(event_id, owner_id)
+		self.addUserToEvent(event_id, owner_id)
 		return event_id
 
 
