@@ -19,7 +19,7 @@ class Events(Controller):
 
 	def create(self):
 		place_id = request.form["place_id"]
-		location_name = request.form["place_id"]
+		location_name = request.form["place_name"]
 		description = request.form["description"]
 		eventTime = request.form["date"]
 		eventName = request.form["eventName"]
