@@ -26,9 +26,7 @@ class Users(Controller):
         }
         
         session['accessToken'] = request.form['token']
-        
         user = self.models['User'].create(data)
-
         session['id'] = user 
 
         return redirect('/users/profile')
@@ -44,8 +42,6 @@ class Users(Controller):
 
     def get_reviews_for_user(self):
     	reviews = self.models['Review'].reviews_for_user(session['id'])
-    	for review in reviews:
-    		review['location_name'] = self.models['Location'].get_place_name(review['location_id'])
     	return self.load_view('/partials/user_reviews.html', reviews=reviews)
 
 

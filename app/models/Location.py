@@ -35,11 +35,9 @@ class Location(Model):
 
 	# get_place_name: given a place_id return the location name
 	def get_place_name(self, place_id):
-		location_info = self.get_place_info_obj(place_id)
-		location_name = ''
-		if location_info['status'] == 'OK':
-			location_name = location_info['result']['name']
-		return location_name
+		query = "SELECT name FROM locations WHERE id = :id "
+		row = self.db.query_db(query, { 'id' : place_id })
+		return row[0]['name'] if row else ''
 
 	# get_weather: get weather information for a given place id
 	# return a json response

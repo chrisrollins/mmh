@@ -23,7 +23,9 @@ class Review(Model):
 		return self.db.query_db(query, { 'id' : id })
 
 	def reviews_for_user(self, user_id):
-		query = 'SELECT * FROM reviews WHERE reviews.user_id = :user_id'
+		query = 'SELECT reviews.*, locations.name as location_name \
+			FROM reviews LEFT JOIN locations ON reviews.location_id = locations.id \
+			WHERE reviews.user_id = :user_id'
 		data = {'user_id': user_id}
 		return self.db.query_db(query, data)
 
