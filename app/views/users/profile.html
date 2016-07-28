@@ -13,18 +13,8 @@
 				});
 
 				//NEED TO CHANGE based on res object
-				$.get('/reviews/select_all_json', function(res){
-					var htmlStr="";
-					for(var i = 0; i < res.length; i++){
-						htmlStr += "<div class='row'><div class='col-sm-10 col-sm-offset-1><p>";
-						htmlStr += res.review;
-						htmlStr += "</p><h5><a href='locations/";
-						htmlStr += res.location_id;
-						htmlStr += "'>";
-						htmlStr += res.location_name;
-						htmlStr += "</a></h5><button class='btn btn-danger'>Delete</button></div></div>";
-					}
-					$('#reviews-col').append(htmlStr);
+				$.get('/users/get_reviews_for_user', function(res){
+					$('#reviews-col').append(res);
 				});
 
 				$.get('/users/get_events_for_user', function(res){

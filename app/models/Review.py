@@ -22,3 +22,8 @@ class Review(Model):
 		query = "DELETE FROM reviews WHERE id=:id"
 		return self.db.query_db(query, { 'id' : id })
 
+	def reviews_for_user(self, user_id):
+		query = 'SELECT * FROM reviews WHERE reviews.user_id = :user_id'
+		data = {'user_id': user_id}
+		return self.db.query_db(query, data)
+
