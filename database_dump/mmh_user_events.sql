@@ -31,7 +31,7 @@ CREATE TABLE `user_events` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `user_events` (
 
 LOCK TABLES `user_events` WRITE;
 /*!40000 ALTER TABLE `user_events` DISABLE KEYS */;
+INSERT INTO `user_events` VALUES (1,110147699427885,1,'2016-07-27 23:08:59','2016-07-27 23:08:59'),(2,110147699427885,2,'2016-07-27 23:08:59','2016-07-27 23:08:59');
 /*!40000 ALTER TABLE `user_events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-27 16:05:49
+-- Dump completed on 2016-07-28  0:04:51

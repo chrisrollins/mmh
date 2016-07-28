@@ -34,7 +34,7 @@ CREATE TABLE `events` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (1,'let\'s rock at alum rock','/static/img/waterfall-03.jpg','short day hike to warm our feet','ChIJ-ZogKrvMj4ARKrML-5D1a88',110147699427885,'2016-07-27 17:41:55','2016-07-27 17:41:55'),(2,'yosemite or bust','/static/img/waterfall-03.jpg','time for our annual yosemetie hike','ChIJ41IqMUH6loARzXdWQwR2YIY',110147699427885,'2016-07-27 18:06:36','2016-07-27 18:06:36');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-27 16:05:49
+-- Dump completed on 2016-07-28  0:04:51
