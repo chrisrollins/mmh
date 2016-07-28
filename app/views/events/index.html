@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Event @ {{ locationName }}</title>
-        <!-- <link href="main.css" media="all" rel="stylesheet" /> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <style type="text/css">
             *{font-family: sans-serif; vertical-align:top;}
         </style>
@@ -11,12 +11,20 @@
         <script type="text/javascript">
             $(document).ready(function()
             {
+            	$.get("/welcome/get_navbar", function(res)
+            	{
+                	$("div#navbar").html(res);
+            	});
             });
         </script>
     </head>
     <body>
+	    <div id="navbar">
+		</div>
         <center>
             <div id="wrapper">
+
+            	<br><br>
                 <h1>Upcoming Event @ <a href="/locations/{{ data['location_id'] }}">{{ location_name }}</a></h1>
                     <br>
                 <div style="display:inline-block; margin-right:350px;">

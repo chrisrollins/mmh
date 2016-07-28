@@ -24,5 +24,8 @@ class User(Model):
 			get_user = "SELECT users.id FROM users ORDER BY id DESC LIMIT 1"
 			return self.db.query_db(get_user)
 
-		
 	
+		def getUserName(self, user_id):
+			query = "SELECT name FROM users WHERE id = :user_id"
+			data = {"user_id": user_id}
+			return self.db.query_db(query, data)

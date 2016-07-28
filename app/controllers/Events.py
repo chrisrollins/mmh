@@ -6,14 +6,16 @@ class Events(Controller):
 		self.load_model('Event')
 		self.load_model('Api')
 		self.load_model('Location')
+		self.load_model('User')
 
 
 	def index(self, event_id):
 		data = self.models['Event'].getEventData(event_id)
 		location_name = self.models['Location'].get_place_name(data[0]["location_id"])
+		owner_name = self.models['User'].getUserName(data[0]["owner_id"])
 		print data[0]
 		print location_name
-		return self.load_view('/events/index.html', data=data[0], location_name=location_name)
+		return self.load_view('/events/index.html', data=data[0], location_name=location_name, owner_name=owner_name)
 
 
 	def createPage(self):
