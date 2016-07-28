@@ -26,7 +26,7 @@ class Reviews(Controller):
 		reviews = self.models['Review'].reviews_by_location(data['location_id'])
 		return self.load_view('partials/location_reviews.html', reviews=reviews)
 
-	def delete(self, id):
-		self.models['Review'].delete(id)
-		return True
+	def delete(self, review_id):
+		self.models['Review'].delete(review_id)
+		return redirect('/users/profile')
 
