@@ -1,10 +1,10 @@
 from system.core.model import *
 
 class User(Model):
-    def __init__(self):
-        super(User, self).__init__()
+	def __init__(self):
+		super(User, self).__init__()
 
-    def create(self,info):
+	def create(self,info):
 		query = "INSERT INTO users (id, handle, email, created_at, updated_at) VALUES (:id, :handle, :email, NOW(), NOW())"
 		data = {
 			'id': info['id'],
@@ -25,7 +25,7 @@ class User(Model):
 			return self.db.query_db(get_user)
 
 	
-		def getUserName(self, user_id):
-			query = "SELECT name FROM users WHERE id = :user_id"
-			data = {"user_id": user_id}
-			return self.db.query_db(query, data)
+	def getUserName(self, user_id):
+		query = "SELECT name FROM users WHERE id = :user_id"
+		data = {"user_id": user_id}
+		return self.db.query_db(query, data)
