@@ -10,8 +10,10 @@ class Events(Controller):
 
 	def index(self, event_id):
 		data = self.models['Event'].getEventData(event_id)
-		print data
-		return self.load_view('/events/index.html', data=data)
+		location_name = self.models['Location'].get_place_name(data[0]["location_id"])
+		print data[0]
+		print location_name
+		return self.load_view('/events/index.html', data=data[0], location_name=location_name)
 
 
 	def createPage(self):
