@@ -11,7 +11,7 @@ class Event(Model):
 
 
 	#Get all data about an event.
-	def getEventData(self, event_id):
+  	def getEventData(self, event_id):
 		query = "SELECT * FROM events WHERE events.id = event_id"
 		data = { "event_id": event_id }
 		return self.db.query_db(query)
