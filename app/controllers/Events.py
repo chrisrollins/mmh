@@ -8,13 +8,9 @@ class Events(Controller):
 		self.load_model('Location')
 
 
-	def index(self, id):
-		locationName = self.models('Location').getLocationName(id) #??
-		location_id = self.models('Event').getEventLocationID(id)
-		ownerName = self.models('Event').getOwnerID(id)
-		date = self.models('Event').getDate(id)
-		time = self.models('Event').getTime(id)
-		return self.load_view('/events/index.html', locationName=locationName, location_id=location_id, ownerName=ownerName, date=date, time=time)
+	def index(self, event_id):
+		data = self.models['Event'].getEventData()
+		return self.load_view('/events/index.html', data=data)
 
 
 	def createPage(self):
@@ -22,4 +18,12 @@ class Events(Controller):
 
 
 	def create(self):
-		return self.load_view('/events/create.html')
+		place_id = request.form["place_id"]
+		location_name = request.form["place_id"]
+		description = request.form["description"]
+		eventTime = request.form["date"]
+		eventName = request.form["eventName"]
+		owner_id = session["id"]
+
+		event_id = self.models['Event'].createEventAtLocation(place_id, owner_id, eventName, location_name, description, eventTime)
+		return redirect("/event/" + str(event_id))
