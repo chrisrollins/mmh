@@ -12,9 +12,9 @@ class Event(Model):
 
 	#Get all data about an event.
   	def getEventData(self, event_id):
-		query = "SELECT * FROM events WHERE events.id = event_id"
+		query = "SELECT * FROM events WHERE events.id = :event_id"
 		data = { "event_id": event_id }
-		return self.db.query_db(query)
+		return self.db.query_db(query, data)
 
 
 	def getLocationEvent(self, place_id):
@@ -31,7 +31,7 @@ class Event(Model):
 
 	#use the google places ID string
 	def createEventAtLocation(self, place_id, owner_id, event_name, location_name, description, eventTime):
-		query = "INSERT INTO locations (id, name) VALUES (:place_id, :name)"
+		query = "INSERT INTO locations (id, name) VALUES (:place_id, :name) ON DUPLICATE KEY UPDATE id=id"
 		data = { "place_id": place_id, "name": location_name}
 		self.db.query_db(query, data)
 		query = "INSERT INTO events (location_id, owner_id, name, description, created_at) VALUES (:place_id, :owner_id, :event_name, :eventDesc, :eventTime)"
@@ -40,6 +40,7 @@ class Event(Model):
 		query = "INSERT INTO user_events(user_id, event_id) VALUES (:owner_id, :event_id)"
 		self.db.query_db(query, { 'owner_id' : owner_id, 'event_id' : event_id })
 		return event_id
+
 
 	def deleteEvent(self, event_id):
 		query = 'DELETE FROM events WHERE id=:event_id'
