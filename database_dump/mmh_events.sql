@@ -34,7 +34,7 @@ CREATE TABLE `events` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'let\'s rock at alum rock','/static/img/waterfall-03.jpg','short day hike to warm our feet','ChIJ-ZogKrvMj4ARKrML-5D1a88',110147699427885,'2016-07-27 17:41:55','2016-07-27 17:41:55'),(2,'yosemite or bust','/static/img/waterfall-03.jpg','time for our annual yosemetie hike','ChIJ41IqMUH6loARzXdWQwR2YIY',110147699427885,'2016-07-27 18:06:36','2016-07-27 18:06:36');
+INSERT INTO `events` VALUES (1,'let\'s rock at alum rock','/static/img/waterfall-03.jpg','short day hike to warm our feet','ChIJ-ZogKrvMj4ARKrML-5D1a88',110147699427885,'2016-07-27 17:41:55','2016-07-27 17:41:55'),(2,'yosemite or bust','/static/img/waterfall-03.jpg','time for our annual yosemetie hike','ChIJ41IqMUH6loARzXdWQwR2YIY',110147699427885,'2016-07-27 18:06:36','2016-07-27 18:06:36'),(3,'New SF event','/static/img/waterfall-03.jpg','new place i haven\'t been before','ChIJ4egP629-j4ARHEBOhfGLwGU',110147699427885,'2016-07-29 00:00:00',NULL),(4,'picnic and hike and hellyer','/static/img/waterfall-03.jpg','easy day hike','ChIJO30s5HQyjoAR1km_IFPiyII',110147699427885,'2016-08-01 00:00:00',NULL),(5,'Pinnacle Peak ','/static/img/waterfall-03.jpg','Let\'s go to the top','ChIJ9bv3LrFqkFQRotc0wVEyvuA',110147699427885,'2016-08-27 00:00:00',NULL),(6,'Island Center Forest','/static/img/waterfall-03.jpg','island forest day','ChIJ79wUZGoUkFQRdN-YP4SnvZ0',110147699427885,'2016-08-27 00:00:00',NULL),(7,'Taylor Mountain Forest','/static/img/waterfall-03.jpg','hey','ChIJxf8hxP9vkFQRWyyK_MWk_J8',110147699427885,'2016-09-03 00:00:00',NULL),(8,'Soaring Eagle','/static/img/waterfall-03.jpg','hey','ChIJAwaRsA9xkFQRYP2uR9cF8yA',110147699427885,'2016-09-10 00:00:00',NULL),(9,'One more for Alum Rock','/static/img/waterfall-03.jpg','','EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ',110147699427885,'2016-07-30 00:00:00',NULL),(10,'one more event at alum rock','/static/img/waterfall-03.jpg','afdafadf','EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ',110147699427885,'2016-07-30 00:00:00',NULL),(11,'gjdghgfh','/static/img/waterfall-03.jpg','asdfasdf','EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ',110147699427885,'2016-07-30 00:00:00',NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-28  0:04:51
+-- Dump completed on 2016-07-28 15:18:45
