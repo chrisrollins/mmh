@@ -18,7 +18,7 @@ class Event(Model):
 
 
 	def getLocationEvent(self, place_id):
-		query = "SELECT * FROM events JOIN users ON users.id = events.owner_id WHERE events.location_id = :place_id"
+		query = "SELECT *, events.id AS event_id FROM events JOIN users ON users.id = events.owner_id WHERE events.location_id = :place_id"
 		data = { "place_id": place_id }
 		return self.db.query_db(query, data)
 
