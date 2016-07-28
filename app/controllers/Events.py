@@ -9,7 +9,8 @@ class Events(Controller):
 
 
 	def index(self, event_id):
-		data = self.models['Event'].getEventData()
+		data = self.models['Event'].getEventData(event_id)
+		print data
 		return self.load_view('/events/index.html', data=data)
 
 
@@ -26,4 +27,4 @@ class Events(Controller):
 		owner_id = session["id"]
 
 		event_id = self.models['Event'].createEventAtLocation(place_id, owner_id, eventName, location_name, description, eventTime)
-		return redirect("/event/" + str(event_id))
+		return redirect("/events/" + str(event_id))
