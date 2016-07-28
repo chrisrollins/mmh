@@ -15,6 +15,11 @@
             	{
                 	$("div#navbar").html(res);
             	});
+
+            	$.get("/locations/get_map_html/{{ location_id }}", function(res)
+            	{
+                	$("#maps").html(res);
+            	});
             });
         </script>
     </head>
@@ -28,17 +33,16 @@
                 <h1>Upcoming Event @ <a href="/locations/{{ data['location_id'] }}">{{ location_name }}</a></h1>
                     <br>
                 <div style="display:inline-block; margin-right:350px;">
-                    <div id="map" style="width:150px; height:150px; border: 1px solid;">
-                        map
+                    <div id="maps" style="width:150px; height:150px; border: 1px solid;">
+                        
                     </div>
                     <br>
                     <br>
                     <br>
                     <br>
-                    <p><b>Hosted By:</b> {{ ownerName }}</p>
-                    <p><b>Date:</b> {{ date }}</p>
-                    <p><b>Time:</b> {{ time }}</p>
-                    <p><b>Description:</b> {{ description }}</p>
+                    <p><b>Hosted By:</b> {{ owner_name[0]["handle"] }}</p>
+                    <p><b>Date:</b> {{ data["created_at"] }}
+                    <p><b>Description:</b> {{ data["description"] }}</p>
                 </div>
                 <div style="display:inline-block;"">
                     <div id="weather" style="width:150px; height:150px; border: 1px solid;">
@@ -49,7 +53,11 @@
                     <br>
                     <br>
                     <div id="users" style="width:150px; height:200px; border: 1px solid;">
-                        list of users going
+                        {% if event_users %}
+                        	{% for user in event_users%}
+                        		<p>{{ user }}</p>
+                        	{% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

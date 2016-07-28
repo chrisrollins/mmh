@@ -13,8 +13,8 @@ class Events(Controller):
 		data = self.models['Event'].getEventData(event_id)
 		location_name = self.models['Location'].get_place_name(data[0]["location_id"])
 		owner_name = self.models['User'].getUserName(data[0]["owner_id"])
-		print data[0]
-		print location_name
+		event_users = self.models['Event'].getEventUsersByName(event_id)
+		print event_users
 		return self.load_view('/events/index.html', data=data[0], location_name=location_name, owner_name=owner_name)
 
 
@@ -31,13 +31,14 @@ class Events(Controller):
 		owner_id = session["id"]
 		print owner_id
 		image_source = '/static/img/waterfall-03.jpg' # default waterfall image
-
 		event_id = self.models['Event'].createEventAtLocation(place_id, owner_id, eventName, location_name, description, image_source, eventTime)
 		return redirect("/events/" + str(event_id))
+
 
 	def destroy(self, event_id):
 		self.models['Event'].deleteEvent(event_id)
 		return redirect('/users/profile')
+
 
 	def display(self):
 		activity = self.models['Event'].showTopfive()

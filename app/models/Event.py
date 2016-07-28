@@ -29,6 +29,18 @@ class Event(Model):
 		return self.db.query_db(query, data)
 
 
+	def getEventUsersByName(self, event_id):
+		query = "SELECT users.handle FROM users JOIN user_events ON users.id = user_events.user_id WHERE user_events.event_id = :event_id"
+		data = {"event_id": event_id}
+		return self.db.query_db(query, data)
+
+
+	def addUserToEvent(self, event_id, user_id):
+		query = "INSERT INTO user_events (user_id, event_id) VALUES (:user_id, :event_id)"
+		data = {"event_id": event_id, "user_id": user_id}
+		return self.db.query_db(query, data)
+
+
 	#use the google places ID string
 	def createEventAtLocation(self, place_id, owner_id, event_name, location_name, description, image_source, eventTime):
 		query = "INSERT INTO locations (id, name) VALUES (:place_id, :name) ON DUPLICATE KEY UPDATE id=id"
@@ -39,6 +51,7 @@ class Event(Model):
 		event_id = self.db.query_db(query, data)
 		query = "INSERT INTO user_events(user_id, event_id) VALUES (:owner_id, :event_id)"
 		self.db.query_db(query, { 'owner_id' : owner_id, 'event_id' : event_id })
+		addUserToEvent(event_id, owner_id)
 		return event_id
 
 
