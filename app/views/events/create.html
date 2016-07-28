@@ -4,7 +4,7 @@
         <title>Creating a new Event</title>
         <!-- <link href="main.css" media="all" rel="stylesheet" /> -->
         <style type="text/css">
-            *{font-family: sans-serif; vertical-align:top;}
+            *{margin:0px; padding:0pc; font-family: sans-serif; vertical-align:top;}
 
             #locations
             {
@@ -18,12 +18,17 @@
             #selected_location_info
             {
                 width: 300px;
-                height: 450px;
+                height: 200px;
+            }
+            #selected_location_loading
+            {
+                width: 300px;
+                height: 100px;
             }
             #selected_location
             {   
                 width: 300px;
-                height: 450px;
+                height: 350px;
                 display: inline-block;
             }
             .place
@@ -55,7 +60,7 @@
                     {
                         loading = true;
                         document.getElementById('locations').innerHTML = "<br><br><br><center><img src='http://i.imgur.com/pwzYfJB.gif'></center>";
-                                
+
     					$.ajax({
     		            url: "https://trailapi-trailapi.p.mashape.com/?q[activities_activity_type_name_eq]=hiking&q[city_cont]="+ city +"&radius=25",
     		            type: "GET",
@@ -91,7 +96,20 @@
 
                                     document.getElementById('selected_location_info').innerHTML = 
                                     "Create new event @ " + places[val]["name"] + "<br><div style='width:100px;height:100px;border: 1px solid;'><br>placeholder for map</div>";
-                                
+
+                                    var lat = places[val]["lat"]
+                                    var lon = places[val]["lon"]
+                                    var name = places[val]["name"]
+                                    
+                                    document.getElementById('selected_location_loading').innerHTML = "<center><img src='http://i.imgur.com/pwzYfJB.gif'></center>";
+                        
+                                    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat +","+ lon +"&key=AIzaSyB0Eiy-lbm5O6nTI9nBOdx6WoWGjlPlVeA", function(place_info)
+                                    {
+                                        console.log(place_info);
+                                        console.log(place_info["results"][0]["place_id"]);
+                                        document.getElementById('hidden_inputs').innerHTML = "<input type='hidden' name='place_id' value='"+ place_info["results"][0]["place_id"] +"'><input type='hidden' name='place_name' value='"+ name +"'>";
+                                        document.getElementById('selected_location_loading').innerHTML = "";
+                                    }, "json");
 
                                 });
 
@@ -122,14 +140,17 @@
                 	
                 </div>
                 <div id="selected_location">
-                <div id="selected_location_info"></div>
-                    <form action="/event/create" method="post">
-                        Event Name: <input type="text" name="eventName">
-                        Event Description:<textarea name="description" rows="2" cols="25"></textarea>
+                    <div id="selected_location_info"></div>
+                    <form id="createForm" action="/event/create" method="post">
+                        Event Name: <input type="text" name="eventName"><br>
+                        Event Description:<textarea name="description" rows="2" cols="25"></textarea><br>
+                        Event Time: <input type="date" name="date">
                         <br>
                         <br>
+                        <div id="hidden_inputs"></div>
                         <input type="submit" name="submit" value="Create Event">
                     </form>
+                <div id="selected_location_loading"></div>
                 </div>
             </div>
         </center>
