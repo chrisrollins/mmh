@@ -24,7 +24,7 @@ class Event(Model):
 
 
 	def getUserEvents(self, user_id):
-		query = "SELECT * FROM events JOIN user_events ON events.id = user_events.event_id JOIN users ON users.id = user_events.user_id WHERE user_events.user_id = :user_id"
+		query = "SELECT users.*, events.*, events.id AS event_id, locations.name AS location_name FROM events JOIN user_events ON events.id = user_events.event_id JOIN users ON users.id = user_events.user_id JOIN locations ON locations.id = events.location_id WHERE user_events.user_id = :user_id"
 		data = { "user_id": user_id }
 		return self.db.query_db(query, data)
 
@@ -36,4 +36,7 @@ class Event(Model):
 		self.db.query_db(query, data)
 		query = "INSERT INTO events (location_id, owner_id, name, description, created_at) VALUES (:place_id, :owner_id, :event_name, :eventDesc, :eventTime)"
 		data = { "place_id": place_id, "owner_id": owner_id, "eventDesc": description, "eventTime": eventTime, "event_name": event_name }
-		return self.db.query_db(query, data)
+		event_id = self.db.query_db(query, data)
+		query = "INSERT INTO user_events(user_id, event_id) VALUES (:owner_id, :event_id)"
+		user_events_id = self.db.query_db(query, { 'owner_id' : owner_id, 'event_id' : event_id })
+		return event_id
