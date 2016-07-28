@@ -30,12 +30,12 @@ class Event(Model):
 
 
 	#use the google places ID string
-	def createEventAtLocation(self, place_id, owner_id, event_name, location_name, description, eventTime):
+	def createEventAtLocation(self, place_id, owner_id, event_name, location_name, description, image_source, eventTime):
 		query = "INSERT INTO locations (id, name) VALUES (:place_id, :name) ON DUPLICATE KEY UPDATE id=id"
 		data = { "place_id": place_id, "name": location_name}
 		self.db.query_db(query, data)
-		query = "INSERT INTO events (location_id, owner_id, name, description, created_at) VALUES (:place_id, :owner_id, :event_name, :eventDesc, :eventTime)"
-		data = { "place_id": place_id, "owner_id": owner_id, "eventDesc": description, "eventTime": eventTime, "event_name": event_name }
+		query = "INSERT INTO events (location_id, owner_id, name, description, image_source, created_at) VALUES (:place_id, :owner_id, :event_name, :eventDesc, :image_source, :eventTime)"
+		data = { "place_id": place_id, "owner_id": owner_id, "eventDesc": description, "eventTime": eventTime, "image_source" : image_source, "event_name": event_name }
 		event_id = self.db.query_db(query, data)
 		query = "INSERT INTO user_events(user_id, event_id) VALUES (:owner_id, :event_id)"
 		self.db.query_db(query, { 'owner_id' : owner_id, 'event_id' : event_id })
