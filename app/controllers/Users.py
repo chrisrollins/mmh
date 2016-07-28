@@ -25,10 +25,13 @@ class Users(Controller):
             'email': request.form['email'],
         }
         
-        session['accessToken'] = request.form['token']
+       
+
+        session['accessToken'] = request.form['token']     
+
         user = self.models['User'].create(data)
         session['id'] = user 
-
+        
         return redirect('/users/profile')
 
     def profile(self):
@@ -36,8 +39,10 @@ class Users(Controller):
 
     def get_events_for_user(self):
         events = self.models['Event'].getUserEvents(session['id'])
+
         #for event in events:
         #    event['location_name'] = self.models['Location'].get_place_name(event['location_id'])
+
         return self.load_view('/partials/eventbox.html', events=events)
 
     def get_reviews_for_user(self):
