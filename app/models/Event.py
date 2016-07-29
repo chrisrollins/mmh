@@ -70,7 +70,7 @@ class Event(Model):
 
 	def showTopfive(self):
 
-		query = "SELECT *, id AS event_id FROM events LIMIT 5"
+		query = "SELECT *, events.id AS event_id FROM events JOIN users ON events.owner_id = users.id LIMIT 5"
 
 		return self.db.query_db(query)
 

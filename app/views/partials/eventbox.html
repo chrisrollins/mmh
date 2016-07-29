@@ -6,12 +6,12 @@
 	{% for event in events %}
 		<div class='row'>
 			<div class='col-sm-10 col-sm-offset-1' style='margin-bottom: 5%; border: 1px solid white'>
-				<img style='height: 50px; width: 50px' src="{{event['image_source']}}">
+				<center><img style='height: 50px; width: 50px; margin-top: 3%' src="{{event['image_source']}}"></center>
 				<h4 style='text-align: center'><a href="/events/{{event['event_id']}}">{{event['name']}}</a></h4>
 				{% if event['location_name'] %}
 					<h5 style='text-align: center'><a href="/locations/{{event['location_id']}}">{{ event['location_name'] }}</a></h5>
 				{% endif %}
-				<p style='color: white'>Hosted by: {{ event['handle'] }}</p>
+				<p style='color: white; text-align: center'>Hosted by: {{ event['handle'] }}</p>
 				{% if 'id' in session %}
 					{% if event['owner_id'] == session['id'] %}
 						<button class='btn btn-danger' style='float: right; margin-bottom: 1%'><a href="/events/destroy/{{event['event_id']}}">Delete</a></button>
