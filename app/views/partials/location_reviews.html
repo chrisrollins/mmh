@@ -1,3 +1,13 @@
 {% for review in reviews %}
-    <p>{{ review.review }} Posted by {{ review.handle }} {{ review.updated_at }}</p>
+	<div class='row'>
+		<div class='col-sm-5'>
+			{{ review.review }}
+		</div>
+		<div  class='col-sm-3'>
+			Posted by {{ review.handle }}
+		</div>
+		<div  class='col-sm-4'>
+			{{ review.reviewdate }}
+		</div>
+	</div>
 {% endfor %}
