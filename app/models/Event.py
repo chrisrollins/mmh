@@ -69,6 +69,6 @@ class Event(Model):
 
 
 	def showTopfive(self):
-		query = "SELECT * FROM events LIMIT 5"
+		query = "SELECT *, id AS event_id FROM events LIMIT 5"
 		return self.db.query_db(query)
 
