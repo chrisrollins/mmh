@@ -5,6 +5,22 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <style type="text/css">
             *{font-family: sans-serif; vertical-align:top;}
+            body
+            {
+            	background-image: url("http://i.imgur.com/C580EEw.jpg");
+    			background-size: 1500px 1200px;
+            }
+
+            #users
+            {
+            	background: rgba(255, 200, 150, 0.5);
+            }
+
+            #usersattending
+            {
+            	font-size: 20px;
+            }
+
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -16,9 +32,13 @@
                 	$("div#navbar").html(res);
             	});
 
-            	$.get("/locations/get_map_html/{{ location_id }}", function(res)
+            	$.get("/locations/get_map_html/{{ data['location_id'] }}", function(res)
             	{
                 	$("#maps").html(res);
+            	});
+
+            	$.get("/locations/get_weather_html/{{ data['location_id'] }}", function(res) {
+                	$("#weather").html(res);
             	});
             });
         </script>
@@ -32,9 +52,9 @@
             	<br><br>
                 <h1>Upcoming Event @ <a href="/locations/{{ data['location_id'] }}">{{ location_name }}</a></h1>
                     <br>
-                <div style="display:inline-block; margin-right:350px;">
-                    <div id="maps" style="width:150px; height:150px; border: 1px solid;">
-                        
+                <div style="display:inline-block; margin-right:250px;">
+                    <div id="maps" style="width:302px; height:252px; border: 1px solid;">
+                        <center><img style="margin-top: 95px;" src="http://i.imgur.com/pwzYfJB.gif"></center>
                     </div>
                     <br>
                     <br>
@@ -48,14 +68,15 @@
                     {% endif %}
                 </div>
                 <div style="display:inline-block;"">
-                    <div id="weather" style="width:150px; height:150px; border: 1px solid;">
-                        current weather
+                    <div id="weather" style="height:252px; width:200px; border: 1px solid;">
+                        <center><img style="margin-top: 95px;" src="http://i.imgur.com/pwzYfJB.gif"></center>
                     </div>
                     <br>
                     <br>
                     <br>
                     <br>
-                    <div id="users" style="width:150px; height:200px; border: 1px solid;">
+                    <div id="users" style="width:200px; height:250px; border: 1px solid;">
+                    <center><span id="usersattending">Users Attending</span></center><br>
                         {% if event_users %}
                         	{% for user in event_users%}
                         		<p>{{ user["handle"] }}</p>
