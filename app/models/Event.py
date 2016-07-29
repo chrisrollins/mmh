@@ -18,13 +18,13 @@ class Event(Model):
 
 
 	def getLocationEvent(self, place_id):
-		query = "SELECT *, events.id AS event_id FROM events JOIN users ON users.id = events.owner_id WHERE events.location_id = :place_id"
+		query = "SELECT *, events.id AS event_id, DATE(events.created_at) AS event_date FROM events JOIN users ON users.id = events.owner_id WHERE events.location_id = :place_id"
 		data = { "place_id": place_id }
 		return self.db.query_db(query, data)
 
 
 	def getUserEvents(self, user_id):
-		query = "SELECT users.*, events.*, events.id AS event_id, locations.name AS location_name FROM events JOIN user_events ON events.id = user_events.event_id JOIN users ON users.id = user_events.user_id JOIN locations ON locations.id = events.location_id WHERE user_events.user_id = :user_id"
+		query = "SELECT users.*, events.*, events.id AS event_id, DATE(events.created_at) AS event_date, locations.name AS location_name FROM events JOIN user_events ON events.id = user_events.event_id JOIN users ON users.id = user_events.user_id JOIN locations ON locations.id = events.location_id WHERE user_events.user_id = :user_id"
 		data = { "user_id": user_id }
 		return self.db.query_db(query, data)
 
@@ -70,7 +70,7 @@ class Event(Model):
 
 	def showTopfive(self):
 
-		query = "SELECT *, events.id AS event_id FROM events JOIN users ON events.owner_id = users.id LIMIT 5"
+		query = "SELECT *, events.id AS event_id, date(events.created_at) AS event_date FROM events JOIN users ON events.owner_id = users.id LIMIT 5"
 
 		return self.db.query_db(query)
 

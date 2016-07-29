@@ -48,3 +48,7 @@
 	margin-left: 61px;
 	
 }
+p.errors {
+    color: red;
+}
+

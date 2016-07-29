@@ -10,8 +10,8 @@ class Reviews(Controller):
 
 	def reviews_by_location_html(self, place_id):
 		reviews = self.models['Review'].reviews_by_location(place_id)
-		return self.load_view('partials/location_reviews.html', reviews=reviews)
-		#return self.load_view('/partials/user_reviews.html', reviews=reviews)
+		#return self.load_view('partials/location_reviews.html', reviews=reviews)
+		return self.load_view('/partials/user_reviews.html', reviews=reviews)
 
 	def select_all_html(self):
 		reviews = self.models['Review'].select_all()
@@ -25,8 +25,8 @@ class Reviews(Controller):
 		data = request.form
 		self.models['Review'].insert(data)
 		reviews = self.models['Review'].reviews_by_location(data['location_id'])
-		return self.load_view('partials/location_reviews.html', reviews=reviews)
-		#return self.load_view('/partials/user_reviews.html', reviews=reviews)
+		#return self.load_view('partials/location_reviews.html', reviews=reviews)
+		return self.load_view('/partials/user_reviews.html', reviews=reviews)
 
 	def delete(self, review_id):
 		self.models['Review'].delete(review_id)

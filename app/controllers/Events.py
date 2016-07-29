@@ -10,6 +10,10 @@ class Events(Controller):
 
 
 	def index(self, event_id):
+		if 'id' not in session:
+			flash("Please log in", "errors")
+			return redirect("/")
+
 		data = self.models['Event'].getEventData(event_id)
 		location_name = self.models['Location'].get_place_name(data[0]["location_id"])
 		owner_name = self.models['User'].getUserName(data[0]["owner_id"])
@@ -52,7 +56,5 @@ class Events(Controller):
 
 
 	def display(self):
-		print 'this is the display top 5'
 		activity = self.models['Event'].showTopfive()
-		print activity
 		return self.load_view('/partials/eventbox.html', events = activity)

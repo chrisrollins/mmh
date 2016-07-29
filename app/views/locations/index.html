@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Location</title>
+    <title>Location | MMH</title>
     <link rel="stylesheet" href="/static/css/location.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -30,12 +30,12 @@
 
             // get events for this location
             $.get("/locations/get_location_events_html/{{ place_id }}", function(res) {
-                $("#events").html(res);
+                $("#events").append(res);
             });
 
             // get the reviews by location
             $.get("/reviews/reviews_by_location_html/{{ place_id }}", function(res) {
-                $("#reviews").html(res);
+                $("#reviews-col").append(res);
             });
 
             // add a review and load up the updated review list
@@ -68,14 +68,18 @@
         </div>
 
         <!-- events -->
-        <h5>Events at this location</h5>
-        <div id="events" class="container-fluid scrollable">
-        </div>
+		<div id='events' class='col-sm-12 events'>
+			<h3>Events At This Location</h3>
+		</div><!--end of user-events-->
+
 
         <!-- reviews -->
-        <h5>Reviews</h5>
-        <div id="reviews" class="container-fluid scrollable">
-        </div>
+		<div id='reviews' class='row'>
+			<div id='reviews-col' class='col-sm-8 col-md-offset-2'>
+				<h3>Reviews</h3>
+			</div>
+		</div>
+
 
         <!-- review form -->
         <form id="review_form" action="/reviews/create_for_location" method="post">

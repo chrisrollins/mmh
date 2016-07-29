@@ -5,7 +5,7 @@ class Review(Model):
 		super(Review, self).__init__()
 
 	def reviews_by_location(self, place_id):
-		query = "SELECT *, reviews.updated_at AS reviewdate FROM reviews LEFT JOIN users ON (users.id = reviews.user_id) \
+		query = "SELECT *, reviews.updated_at AS review_date FROM reviews LEFT JOIN users ON (users.id = reviews.user_id) \
 			WHERE location_id = :id ORDER BY reviews.updated_at DESC"
 		return self.db.query_db(query, { 'id' : place_id })
 		
@@ -23,7 +23,7 @@ class Review(Model):
 		return self.db.query_db(query, { 'id' : id })
 
 	def reviews_for_user(self, user_id):
-		query = 'SELECT reviews.*, locations.name as location_name \
+		query = 'SELECT reviews.*, locations.name as location_name, reviews.updated_at AS review_date \
 			FROM reviews LEFT JOIN locations ON reviews.location_id = locations.id \
 			WHERE reviews.user_id = :user_id'
 		data = {'user_id': user_id}

@@ -108,6 +108,7 @@
 		});
 	} 
 </script>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -125,21 +126,21 @@
 -->
 <script>
 	$(document).ready(function(){
-				$.get('/display', function(res){
-					$('#events').append(res);
-				  });
-        $('#fblogout').click(function(){
-            event.preventDefault();
-            console.log('THIS IS THE LOGOUT')
-        });
-          
-        //   FB.logout(function(response){
-        //   });
-        //   $.get('/logout')
-        // }));
-			});
+		$.get('/display', function(res){
+			$('#events').append(res);
+		});
+	});
 </script>
 <div id = "wrapper">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<p class="{{ category }}">{{ message }}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+
+
     <div id ="picture">
       
     </div>
