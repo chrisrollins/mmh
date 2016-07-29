@@ -114,7 +114,8 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1746054202317538";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
 <!--
   Below we include the Login Button social plugin. This button uses
   the JavaScript SDK to present a graphical Login button that triggers
@@ -124,7 +125,16 @@
 	$(document).ready(function(){
 				$.get('/display', function(res){
 					$('#events').append(res);
-				});
+				  });
+        $('#fblogout').click(function(){
+            event.preventDefault();
+            console.log('THIS IS THE LOGOUT')
+        });
+          
+        //   FB.logout(function(response){
+        //   });
+        //   $.get('/logout')
+        // }));
 			});
 </script>
 <div id = "wrapper">
@@ -134,7 +144,7 @@
     <h1 id="header">Mile and a Half</h1>
     
     <div id= "activities" class='col-sm-6'>
-      <h5>Events going on</h5>center
+      <h5>Events going on</h5>
       <div class="row">
         <div id = 'events' class='col-sm-8'></div>
       </div>

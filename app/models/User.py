@@ -22,7 +22,11 @@ class User(Model):
 		else:
 			self.db.query_db(query,data)
 			get_user = "SELECT users.id FROM users ORDER BY id DESC LIMIT 1"
-			return self.db.query_db(get_user)
+			 
+			user = self.db.query_db(get_user)
+			print 'this is the user'
+			print user
+			return
 
 	
 	def getUserName(self, user_id):

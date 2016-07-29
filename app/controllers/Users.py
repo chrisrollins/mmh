@@ -15,8 +15,13 @@ class Users(Controller):
 	# logout: clears session
 	# logs out of facebook?
 	def logout(self):
+		
+		print "THS IS THE SECOND accessTOKEN!"
+		print session['accessToken']
+		url = 'https://www.facebook.com/logout.php?next=http://52.42.107.10/&access_token={}'.format(session['accessToken'])
+		print url
 		session.clear()
-		return redirect('/')
+		return jsonify({"status": True})
 
 	def create(self):
 		data = {
@@ -24,21 +29,26 @@ class Users(Controller):
 			'id': request.form['id'],
 			'email': request.form['email'],
 		}
-	
-	   
 
-		session['accessToken'] = request.form['token']	 
+
+		session['accessToken'] = request.form['token']
+		print "this is the acces Token:"
+		print session['accessToken']	 
 
 		user = self.models['User'].create(data)
 		session['id'] = user 
 	
+
 		return redirect('/users/profile')
 
 	def profile(self):
 		return self.load_view('/users/profile.html')
 
 	def get_events_for_user(self):
+		
 		events = self.models['Event'].getUserEvents(session['id'])
+
+		print events
 		return self.load_view('/partials/eventbox.html', events=events)
 
 	def get_reviews_for_user(self):

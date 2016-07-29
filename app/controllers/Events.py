@@ -52,6 +52,7 @@ class Events(Controller):
 
 
 	def display(self):
+		print 'this is the display top 5'
 		activity = self.models['Event'].showTopfive()
 		print activity
 		return self.load_view('/partials/eventbox.html', events = activity)
