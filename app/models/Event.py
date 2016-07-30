@@ -29,6 +29,10 @@ class Event(Model):
 		data = { "user_id": user_id }
 		return self.db.query_db(query, data)
 
+	def getFriendEvents(self, user_id):
+		query = "SELECT users.*, events.*, events.id AS event_id, DATE(events.created_at) AS event_date, locations.name AS location_name FROM events JOIN user_events ON events.id = user_events.event_id JOIN users ON users.id = events.owner_id JOIN locations ON locations.id = events.location_id WHERE events.owner_id != :user_id AND event_id not IN (SELECT event_id FROM user_events WHERE user_id = :user_id)"
+		data = { "user_id": user_id }
+		return self.db.query_db(query, data)
 
 	def getEventUsers(self, event_id):
 		query = "SELECT users.* FROM users JOIN user_events ON users.id = user_events.user_id WHERE user_events.event_id = :event_id"
@@ -57,7 +61,7 @@ class Event(Model):
 		query = "INSERT INTO events (location_id, owner_id, name, description, image_source, created_at) VALUES (:place_id, :owner_id, :event_name, :eventDesc, :image_source, :eventTime)"
 		data = { "place_id": place_id, "owner_id": owner_id, "eventDesc": description, "eventTime": eventTime, "image_source" : image_source, "event_name": event_name }
 		event_id = self.db.query_db(query, data)
-		query = "INSERT INTO user_events(user_id, event_id) VALUES (:owner_id, :event_id)"
+		query = "INSERT INTO user_events(user_id, event_id, created_at, updated_at) VALUES (:owner_id, :event_id, NOW(), NOW())"
 		self.db.query_db(query, { 'owner_id' : owner_id, 'event_id' : event_id })
 		self.addUserToEvent(event_id, owner_id)
 		return event_id

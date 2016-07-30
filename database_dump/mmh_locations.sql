@@ -39,7 +39,7 @@ CREATE TABLE `locations` (
 
 LOCK TABLES `locations` WRITE;
 /*!40000 ALTER TABLE `locations` DISABLE KEYS */;
-INSERT INTO `locations` VALUES ('ChIJ-ZogKrvMj4ARKrML-5D1a88','Alum Rock Park',NULL,NULL),('ChIJ41IqMUH6loARzXdWQwR2YIY','Yosemite National Park',NULL,NULL),('ChIJ4egP629-j4ARHEBOhfGLwGU','Billy Goat Hill Park',NULL,NULL),('ChIJ79wUZGoUkFQRdN-YP4SnvZ0','Island Center Forest',NULL,NULL),('ChIJ9bv3LrFqkFQRotc0wVEyvuA','Pinnacle Peak',NULL,NULL),('ChIJAwaRsA9xkFQRYP2uR9cF8yA','Soaring Eagle Regional Park',NULL,NULL),('ChIJO30s5HQyjoAR1km_IFPiyII','Hellyer County Park',NULL,NULL),('ChIJP9-SDpjIj4ARgXa4S8VffAI','Penitencia Creek',NULL,NULL),('ChIJxf8hxP9vkFQRWyyK_MWk_J8','Taylor Mountain Forest',NULL,NULL),('EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ','Alum Rock Park',NULL,'2016-07-28 14:45:58');
+INSERT INTO `locations` VALUES ('ChIJ-ZogKrvMj4ARKrML-5D1a88','Alum Rock Park',NULL,NULL),('ChIJ41IqMUH6loARzXdWQwR2YIY','Yosemite National Park',NULL,NULL),('ChIJ4egP629-j4ARHEBOhfGLwGU','Billy Goat Hill Park',NULL,NULL),('ChIJ79wUZGoUkFQRdN-YP4SnvZ0','Island Center Forest',NULL,NULL),('ChIJ9bv3LrFqkFQRotc0wVEyvuA','Pinnacle Peak',NULL,NULL),('ChIJAwaRsA9xkFQRYP2uR9cF8yA','Soaring Eagle Regional Park',NULL,NULL),('ChIJefPVfDnyloARf_Bi2Am4V34','Yosemite Valley',NULL,NULL),('ChIJO30s5HQyjoAR1km_IFPiyII','Hellyer County Park',NULL,NULL),('ChIJP9-SDpjIj4ARgXa4S8VffAI','Penitencia Creek',NULL,NULL),('ChIJx4k2vnwrjoAR69PynJxw_DQ','Joseph D. Grant County Park',NULL,NULL),('ChIJxf8hxP9vkFQRWyyK_MWk_J8','Taylor Mountain Forest',NULL,NULL),('ChIJz_zKsizEj4ARGklZQxfB4Pw','Mission Peak Regional Preserve',NULL,NULL),('EiAzMTkgQmVybmFsIFJkLCBFZGVudmFsZSwgQ0EsIFVTQQ','Rocky Ridge Trail',NULL,NULL),('Eio5ODAgSmFja3BpbmUgU3QsIFRhaG9lIENpdHksIENBIDk2MTQ1LCBVU0E','Tahoe Rim Trail',NULL,NULL),('EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ','Alum Rock Park',NULL,'2016-07-28 14:45:58');
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-28 15:18:45
+-- Dump completed on 2016-07-29 23:57:23

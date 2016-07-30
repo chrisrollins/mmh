@@ -34,7 +34,7 @@ CREATE TABLE `events` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'let\'s rock at alum rock','/static/img/waterfall-03.jpg','short day hike to warm our feet','ChIJ-ZogKrvMj4ARKrML-5D1a88',110147699427885,'2016-07-27 17:41:55','2016-07-27 17:41:55'),(2,'yosemite or bust','/static/img/waterfall-03.jpg','time for our annual yosemetie hike','ChIJ41IqMUH6loARzXdWQwR2YIY',110147699427885,'2016-07-27 18:06:36','2016-07-27 18:06:36'),(3,'New SF event','/static/img/waterfall-03.jpg','new place i haven\'t been before','ChIJ4egP629-j4ARHEBOhfGLwGU',110147699427885,'2016-07-29 00:00:00',NULL),(4,'picnic and hike and hellyer','/static/img/waterfall-03.jpg','easy day hike','ChIJO30s5HQyjoAR1km_IFPiyII',110147699427885,'2016-08-01 00:00:00',NULL),(5,'Pinnacle Peak ','/static/img/waterfall-03.jpg','Let\'s go to the top','ChIJ9bv3LrFqkFQRotc0wVEyvuA',110147699427885,'2016-08-27 00:00:00',NULL),(6,'Island Center Forest','/static/img/waterfall-03.jpg','island forest day','ChIJ79wUZGoUkFQRdN-YP4SnvZ0',110147699427885,'2016-08-27 00:00:00',NULL),(7,'Taylor Mountain Forest','/static/img/waterfall-03.jpg','hey','ChIJxf8hxP9vkFQRWyyK_MWk_J8',110147699427885,'2016-09-03 00:00:00',NULL),(8,'Soaring Eagle','/static/img/waterfall-03.jpg','hey','ChIJAwaRsA9xkFQRYP2uR9cF8yA',110147699427885,'2016-09-10 00:00:00',NULL),(9,'One more for Alum Rock','/static/img/waterfall-03.jpg','','EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ',110147699427885,'2016-07-30 00:00:00',NULL),(10,'one more event at alum rock','/static/img/waterfall-03.jpg','afdafadf','EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ',110147699427885,'2016-07-30 00:00:00',NULL),(11,'gjdghgfh','/static/img/waterfall-03.jpg','asdfasdf','EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ',110147699427885,'2016-07-30 00:00:00',NULL);
+INSERT INTO `events` VALUES (1,'Get Together at Alum Rock','/static/img/waterfall-03.jpg','We need to catch up','EjgxNTE4NC0xNTE4NiBQZW5pdGVuY2lhIENyZWVrIFJkLCBTYW4gSm9zZSwgQ0EgOTUxMzIsIFVTQQ',10207113365138642,'2016-07-30 00:00:00',NULL),(2,'Moderate Day Hike at Rocky Ridge','/static/img/waterfall-03.jpg','let\'s exercise','EiAzMTkgQmVybmFsIFJkLCBFZGVudmFsZSwgQ0EsIFVTQQ',110147699427885,'2016-08-06 00:00:00',NULL),(3,'Company Hike To Yosemite Falls!','/static/img/waterfall-03.jpg','Get your gears ready','ChIJefPVfDnyloARf_Bi2Am4V34',10207989826997606,'2016-09-03 00:00:00',NULL),(4,'PokeMonGo!','/static/img/waterfall-03.jpg','Let\'s find Pikachu','ChIJz_zKsizEj4ARGklZQxfB4Pw',10155222329429762,'2016-08-06 00:00:00',NULL),(5,'Family Reunion','/static/img/waterfall-03.jpg','Save the cookies for Uncle Charlie','Eio5ODAgSmFja3BpbmUgU3QsIFRhaG9lIENpdHksIENBIDk2MTQ1LCBVU0E',10207113365138642,'2016-08-20 00:00:00',NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-28 15:18:45
+-- Dump completed on 2016-07-29 23:57:23

@@ -44,11 +44,12 @@ class Users(Controller):
 	def profile(self):
 		return self.load_view('/users/profile.html')
 
-	def get_events_for_user(self):
-		
+	def get_user_events(self):
 		events = self.models['Event'].getUserEvents(session['id'])
+		return self.load_view('/partials/eventbox.html', events=events)
 
-		print events
+	def get_friend_events(self):
+		events = self.models['Event'].getFriendEvents(session['id'])
 		return self.load_view('/partials/eventbox.html', events=events)
 
 	def get_reviews_for_user(self):

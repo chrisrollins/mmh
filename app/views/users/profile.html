@@ -16,8 +16,12 @@
 					$('#reviews-col').append(res);
 				});
 
-				$.get('/users/get_events_for_user', function(res){
+				$.get('/users/get_user_events', function(res){
 					$('#userevents').append(res);
+				});
+
+				$.get('/users/get_friend_events', function(res){
+					$('#friendevents').append(res);
 				});
 
 			})
@@ -42,34 +46,6 @@
 				<!--friends' events-->
 				<div id='friendevents' class='col-sm-3 events'>
 					<h3>Friends' Events</h3>
-
-					<div class='row'>
-						<div class='col-sm-10 col-sm-offset-1'>
-							<img src="/static/img/waterfall-03.jpg">
-							<h4><a href="#">Company Hike to Yosemite Falls!</a></h4>
-							<h5><a href="#">Yosemite National Park</a></h5>
-							<p>Hosted by: Uma Lakshminarayan</p>
-							<p>Event Date: 2016-08-05</p>
-						</div>
-					</div>
-					<div class='row'>
-						<div class='col-sm-10 col-sm-offset-1'>
-							<img src="/static/img/waterfall-03.jpg">
-							<h4><a href="#">PokemonGO!</a></h4>
-							<h5><a href="#">Mission Peak</a></h5>
-							<p>Hosted by: Steven Yong</p>
-							<p>Event Date: 2016-08-01</p>
-						</div>
-					</div>
-					<div class='row'>
-						<div class='col-sm-10 col-sm-offset-1'>
-							<img src="/static/img/waterfall-03.jpg">
-							<h4><a href="#">Family Reunion</a></h4>
-							<h5><a href="#">Little Yosemite</a></h5>
-							<p>Hosted by: Chris Rollins</p>
-							<p>Event Date: 2016-08-23</p>
-						</div>
-					</div>
 				</div><!--end of friends' events-->
 
 				<div class='col-sm-1'></div>
