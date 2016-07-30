@@ -23,8 +23,9 @@ class Event(Model):
 		return self.db.query_db(query, data)
 
 
+    # my events: ones that I am hosting or am attending
 	def getUserEvents(self, user_id):
-		query = "SELECT users.*, events.*, events.id AS event_id, DATE(events.created_at) AS event_date, locations.name AS location_name FROM events JOIN user_events ON events.id = user_events.event_id JOIN users ON users.id = user_events.user_id JOIN locations ON locations.id = events.location_id WHERE user_events.user_id = :user_id"
+		query = "SELECT users.*, events.*, events.id AS event_id, DATE(events.created_at) AS event_date, locations.name AS location_name FROM events JOIN user_events ON events.id = user_events.event_id JOIN users ON users.id = events.owner_id JOIN locations ON locations.id = events.location_id WHERE user_events.user_id = :user_id OR events.owner_id = :user_id GROUP BY event_id ORDER BY events.created_at ASC"
 		data = { "user_id": user_id }
 		return self.db.query_db(query, data)
 
@@ -41,7 +42,7 @@ class Event(Model):
 		check = self.db.query_db(query, data)
 
 		if len(check) == 0:
-			query = "INSERT INTO user_events (user_id, event_id) VALUES (:user_id, :event_id)"
+			query = "INSERT INTO user_events (user_id, event_id, created_at, updated_at) VALUES (:user_id, :event_id, NOW(), NOW())"
 			data = {"event_id": event_id, "user_id": user_id}
 			return self.db.query_db(query, data)
 		else:
