@@ -58,7 +58,7 @@ class Location(Model):
 		json_str = self.get_weather(place_id)
 		weather = json.loads(json_str)
 		weather['sunrise'] = datetime.fromtimestamp(weather['sys']['sunrise']).strftime('%Y-%m-%d %H:%M:%S')
-		weather['sunset'] = datetime.fromtimestamp(weather['sys']['sunrise']).strftime('%Y-%m-%d %H:%M:%S')
+		weather['sunset'] = datetime.fromtimestamp(weather['sys']['sunset']).strftime('%Y-%m-%d %H:%M:%S')
 		return weather
 
 	# get_directions: use google maps directions api to get directions
