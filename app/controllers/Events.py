@@ -50,6 +50,7 @@ class Events(Controller):
 		return redirect("/events/" + str(event_id))
 
 
+	# TODO: make this a post method
 	def destroy(self, event_id):
 		self.models['Event'].deleteEvent(event_id)
 		return redirect('/users/profile')
