@@ -5,13 +5,14 @@ class Locations(Controller):
 		super(Locations, self).__init__(action)
 		self.load_model('Location')
 		self.load_model('Event')
+		self.load_model('Review')
 
 	# index: displays the location page for location id specified
 	def index(self, place_id):
 		location_info = self.models['Location'].get_place_info_obj(place_id)
 		if location_info['status'] == "OK":
 			name = self.models['Location'].get_place_name(place_id)
-			return self.load_view('locations/index.html', location_name=name, place_id=place_id, user_id=1)
+			return self.load_view('locations/index.html', location_name=name, place_id=place_id)
 		else:
 			# redirect to profile page if location doesn't exist
 			flash("Unknown location", "error")
@@ -44,4 +45,8 @@ class Locations(Controller):
 		events = self.models['Event'].getLocationEvent(place_id)
 		return self.load_view("partials/eventbox.html", events=events)
 	
+	def get_location_reviews_html(self, place_id):
+		reviews = self.models['Review'].reviews_by_location(place_id)
+		return self.load_view('/partials/reviews.html', reviews=reviews, by_location=place_id)
+
 

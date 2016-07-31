@@ -34,20 +34,15 @@ iframe {
 	background: linear-gradient(
 		rgba(0, 0, 0, 0.5),
 		rgba(0, 0, 0, 0.5)
-	), url('/static/img/sky.jpeg');
+
+	), url('https://hd.unsplash.com/photo-1467173572719-f14b9fb86e5f');
 	background-size: cover;
 	width: 100%;
 	height: 100%;
 }
 #reviewtext {
-	background: linear-gradient(
-		rgba(0, 0, 0, 0.5),
-		rgba(0, 0, 0, 0.5)
-	), url('/static/img/sky.jpeg');
-	background-size: cover;
-	width: 100%;
-	height: 100%;
-    color: white;
+	background-color: transparent;
+	color: white;
 }
 #reviews{
     text-align: center;

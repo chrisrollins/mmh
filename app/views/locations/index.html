@@ -34,14 +34,15 @@
             });
 
             // get the reviews by location
-            $.get("/reviews/reviews_by_location_html/{{ place_id }}", function(res) {
-                $("#reviews-col").append(res);
+            $.get("/locations/get_location_reviews_html/{{ place_id }}", function(res) {
+                $("#reviews_area").html(res);
             });
 
             // add a review and load up the updated review list
             $("#review_form").submit(function() {
+				console.log("add");
                 $.post($(this).attr('action'), $(this).serialize(), function(res) {
-                    $("#reviews").html(res);
+                    $("#reviews_area").html(res);
                     $("#reviewtext").val('')
                 });
                 return false;
@@ -77,6 +78,7 @@
 		<div id='reviews' class='row'>
 			<div id='reviews-col' class='col-sm-8 col-md-offset-2'>
 				<h3>Reviews</h3>
+				<div id="reviews_area"></div>
 			</div>
 		</div>
 

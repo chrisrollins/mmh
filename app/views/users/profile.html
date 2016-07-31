@@ -13,7 +13,7 @@
 				});
 
 				$.get('/users/get_reviews_for_user', function(res){
-					$('#reviews-col').append(res);
+					$('#reviews_area').html(res);
 				});
 
 				$.get('/users/get_user_events', function(res){
@@ -64,6 +64,7 @@
 			<div id='reviews' class='row'>
 				<div id='reviews-col' class='col-sm-8 col-md-offset-2'>
 					<h3>Reviews</h3>
+					<div id="reviews_area"></div>
 				</div>
 			</div>
 		</div><!--end of body-->

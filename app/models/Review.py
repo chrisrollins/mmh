@@ -5,8 +5,9 @@ class Review(Model):
 		super(Review, self).__init__()
 
 	def reviews_by_location(self, place_id):
-		query = "SELECT *, reviews.updated_at AS review_date FROM reviews LEFT JOIN users ON (users.id = reviews.user_id) \
-			WHERE location_id = :id ORDER BY reviews.updated_at DESC"
+		query = "SELECT *, reviews.updated_at AS review_date, reviews.id AS id \
+			FROM reviews LEFT JOIN users ON (users.id = reviews.user_id) \
+			WHERE location_id = :id ORDER BY reviews.updated_at ASC"
 		return self.db.query_db(query, { 'id' : place_id })
 		
 	def select_all(self):

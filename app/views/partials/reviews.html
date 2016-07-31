@@ -1,0 +1,31 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+	// delete a review and update the reviews sections without reloading page
+	$(document).ready(function(){
+		$("form.delete").submit(function() {
+			$.post($(this).attr('action'), $(this).serialize(), function(res) {
+				$("#reviews_area").html(res);
+			});
+			return false;
+		});
+	});
+</script>
+
+<!-- display reviews -->
+{% for review in reviews %}
+	<div class='row'>
+		<div class='col-sm-10 col-sm-offset-1'>
+			<p>{{ review.review }}</p>
+			<h5><a href="/locations/{{ review.location_id }}">{{ review.location_name }}</a></h5>
+			<p>Reviewed on {{ review.review_date }} {{ review.handle }}</p>
+			<form class="delete" action="/reviews/destroy/{{review['id']}}" method="post">
+				{% if by_location %}
+					<input type="hidden" name="by_location" value="{{by_location}}">
+				{% else %}
+					<input type="hidden" name="by_user" value="{{by_user}}">
+				{% endif %}
+				<button type="submit" class="btn btn-danger">Delete</button>
+			</form>
+		</div>
+	</div>
+{% endfor %}

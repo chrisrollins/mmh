@@ -13,13 +13,7 @@ class Users(Controller):
 		return self.load_view('/users/index.html')
 
 	# logout: clears session
-	# logs out of facebook?
 	def logout(self):
-		
-		print "THS IS THE SECOND accessTOKEN!"
-		print session['accessToken']
-		url = 'https://www.facebook.com/logout.php?next=http://52.42.107.10/&access_token={}'.format(session['accessToken'])
-		print url
 		session.clear()
 		return jsonify({"status": True})
 
@@ -29,15 +23,9 @@ class Users(Controller):
 			'id': request.form['id'],
 			'email': request.form['email'],
 		}
-
-
-		session['accessToken'] = request.form['token']
-		print "this is the acces Token:"
-		print session['accessToken']	 
-
 		user = self.models['User'].create(data)
 		session['id'] = user 
-	
+		session['accessToken'] = request.form['token']
 
 		return redirect('/users/profile')
 
@@ -54,7 +42,7 @@ class Users(Controller):
 
 	def get_reviews_for_user(self):
 		reviews = self.models['Review'].reviews_for_user(session['id'])
-		return self.load_view('/partials/user_reviews.html', reviews=reviews)
+		return self.load_view('/partials/reviews.html', reviews=reviews, by_user=session['id'])
 
 
 

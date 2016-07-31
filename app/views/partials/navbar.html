@@ -1,21 +1,15 @@
 <!-- make sure to link bootstrap in your file-->
-
-
-
-<!--navbar-->
 <script type="text/javascript">
 	$(document).ready(function(){
-				
-        $('#fblogout').click(function(){
-            
-            console.log('THIS IS THE LOGOUT')
-        $.get('/logout', function(resp){
-
-        });
+		$('#fblogout').click(function(){
+	        $.get('/logout', function(resp){
+				// do nothing with the response. just wanted to call /logout to clear session
+	        });
         });
     });
-	
 </script>
+
+<!--navbar-->
 <nav class='navbar navbar-default navbar-fixed-top'>
 	<div class='container-fluid'>
 		<a class='navbar-brand' href="/">MMH</a>
