@@ -16,7 +16,7 @@ class Locations(Controller):
 		else:
 			# redirect to profile page if location doesn't exist
 			flash("Unknown location", "error")
-			return redirect('/profile')
+			return redirect('/users/profile')
 
 	# get_map: use google maps embedded api to get map
 	# load partial html
